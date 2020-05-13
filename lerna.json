@@ -1,0 +1,7 @@
+{
+  "lerna": "3.21.0",
+  "npmClient": "npm",
+  "version": "independent",
+  "packages": ["src/**/*"],
+  "private": true
+}
