@@ -7,7 +7,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: {
     polyfill: '@babel/polyfill',
-    main: './src/index.vue',
+    main: './src/index.js',
   },
   output: {
     filename: '[name].bundle.js',
