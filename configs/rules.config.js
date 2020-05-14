@@ -1,5 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = [
   {
@@ -7,9 +8,6 @@ module.exports = [
     exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file),
     use: {
       loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env', 'vue'],
-      },
     },
   },
   {
@@ -20,7 +18,9 @@ module.exports = [
   {
     test: /\.scss$/,
     use: [
-      'vue-style-loader',
+      process.env.NODE_ENV !== 'production'
+        ? 'vue-style-loader'
+        : MiniCSSExtractPlugin.loader,
       'css-loader',
       {
         loader: 'postcss-loader',

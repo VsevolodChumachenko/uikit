@@ -1,4 +1,4 @@
-import Button from './index.js';
+import Button from '@uikit/button';
 import { action } from '@storybook/addon-actions';
 
 export default {
