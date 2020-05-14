@@ -1,13 +1,9 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
-
-@Component
-class Button extends Vue {
-  @Prop({ type: String, default: 'primary' }) theme;
-  @Prop({ type: String, default: 'md' }) size;
-  @Prop({ type: String, default: 'button' }) as;
-  @Prop({ type: Boolean, default: false }) loading;
-  @Prop({ type: Boolean, default: false }) disabled;
-  @Prop({ type: Boolean, default: false }) block;
-}
-
-export default Button;
+export default {
+  props: {
+    theme: { type: String, default: 'primary' },
+    as: { type: String, default: 'button' },
+    loading: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    block: { type: Boolean, default: false },
+  },
+};
