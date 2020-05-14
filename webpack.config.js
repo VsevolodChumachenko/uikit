@@ -4,7 +4,7 @@ const rules = require('./configs/rules.config');
 const { aliases } = require('./configs/aliases.config');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.vue',
   output: {
     filename: pkg.main,
     library: '',
@@ -16,7 +16,13 @@ module.exports = {
     modules: ['node_modules'],
   },
   module: {
-    rules: rules,
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      ...rules,
+    ],
   },
   plugins: [new VueLoaderPlugin()],
 };

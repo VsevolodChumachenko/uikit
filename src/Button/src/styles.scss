@@ -2,7 +2,7 @@
   border-radius: 6px;
   background: transparent;
   cursor: pointer;
-  transition: .15s ease-in-out;
+  transition: 0.15s ease-in-out;
   border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
@@ -12,14 +12,14 @@
     width: 100%;
   }
   &:disabled {
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
   }
   $themes: (
-      (primary, $btnPrimary, $white, $btnPrimaryHover, $btnPrimary),
-      (secondary, $btnSecondary, $white, $btnSecondaryHover, $btnSecondary),
-      (ghost, $bthGhost, $green, $btnGhostHover, #DDE3D5),
-      (registration, $bthGhost, $black, $btnGhostHover, $green3-o3),
+    (primary, $btnPrimary, $white, $btnPrimaryHover, $btnPrimary),
+    (secondary, $btnSecondary, $white, $btnSecondaryHover, $btnSecondary),
+    (ghost, $bthGhost, $green, $btnGhostHover, #dde3d5),
+    (registration, $bthGhost, $black, $btnGhostHover, $green3-o3)
   );
   @each $name, $bg, $color, $hover, $borderColor in $themes {
     &.#{$name} {

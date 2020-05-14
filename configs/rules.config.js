@@ -1,10 +1,7 @@
 const autoprefixer = require('autoprefixer');
+const path = require('path');
 
 module.exports = [
-  {
-    test: /\.vue$/,
-    loader: 'vue-loader',
-  },
   {
     test: /\.js$/,
     exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file),
@@ -36,6 +33,15 @@ module.exports = [
         },
       },
       'sass-loader',
+      {
+        loader: 'style-resources-loader',
+        options: {
+          patterns: [
+            path.resolve(__dirname, '../assets/styles/vars.scss'),
+            path.resolve(__dirname, '../assets/styles/mixins.scss'),
+          ],
+        },
+      },
     ],
   },
   {

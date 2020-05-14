@@ -1,0 +1,13 @@
+.swiper-pagination {
+  display: none;
+  bottom: 0;
+  @include mobile {
+    display: block;
+  }
+  /deep/ .swiper-pagination-bullet {
+    margin: 0 4px;
+  }
+  /deep/ .swiper-pagination-bullet-active {
+    background: $green;
+  }
+}

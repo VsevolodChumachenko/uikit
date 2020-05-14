@@ -1,0 +1,28 @@
+.form {
+  &__row {
+    display: flex;
+    width: 100%;
+    &_wrap {
+      flex-wrap: wrap;
+      .form__col {
+        margin-bottom: 16px;
+      }
+    }
+    &_md-wrap {
+      @include tablet {
+        flex-wrap: wrap;
+        .form__col {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+  &__col {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+  &__group {
+    position: relative;
+  }
+}

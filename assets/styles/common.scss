@@ -1,0 +1,261 @@
+html,
+body {
+  height: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 100%;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: $base;
+}
+
+.container {
+  max-width: 1210px;
+  margin: 0 auto;
+  padding: 0 20px;
+  @include tablet {
+    padding: 0 40px;
+    max-width: 990px;
+  }
+  @include tablet-sm {
+    max-width: 763px;
+  }
+  @include mobile {
+    padding: 0 8px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.show-xs {
+  display: none;
+  @include mobile {
+    display: block;
+  }
+}
+.show-xs-flex {
+  display: none !important;
+  @include mobile {
+    display: flex !important;
+  }
+}
+.hide-xs {
+  display: block;
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.page-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding-top: 124px;
+  position: relative;
+  @include mobile {
+    padding-top: 80px;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.link {
+  color: $green;
+  text-decoration: underline;
+}
+
+.common-page {
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+  }
+  ul {
+    list-style: disc;
+    padding-left: 30px;
+    line-height: 1.4;
+    li {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.section {
+  padding: 50px 0;
+}
+.page {
+  &__wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding-top: 124px;
+    position: relative;
+    @include mobile {
+      padding-top: 80px;
+    }
+  }
+  &__bg {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    display: flex;
+    max-width: 1549px;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    &-left {
+      position: absolute;
+      left: 0;
+    }
+    &-right {
+      position: absolute;
+      right: 0;
+    }
+    &_osago {
+      .page__bg-left {
+        @include desktop {
+          left: -30px;
+        }
+        @include tablet {
+          left: -140px;
+        }
+        @include tablet-sm {
+          left: -165px;
+        }
+        @include mobile {
+          left: 0;
+          top: -150px;
+        }
+      }
+      .page__bg-right {
+        @include desktop {
+          right: -77px;
+        }
+        @include tablet {
+          right: -240px;
+        }
+        @include tablet-sm {
+          right: -285px;
+        }
+        @include mobile {
+          right: 0;
+          top: 106px;
+        }
+      }
+    }
+    &_kasko {
+      .page__bg-left {
+        @include desktop {
+          left: -15px;
+        }
+        @include tablet {
+          left: -75px;
+        }
+        @include tablet-sm {
+          left: -150px;
+        }
+        @include mobile {
+          left: 0;
+          top: 50px;
+        }
+      }
+      .page__bg-right {
+        @include desktop {
+          right: -75px;
+        }
+        @include tablet {
+          right: -200px;
+        }
+        @include tablet-sm {
+          right: -230px;
+        }
+        @include mobile {
+          right: 0;
+        }
+      }
+    }
+    &_trip {
+      .page__bg-left {
+        @include desktop {
+          left: -30px;
+        }
+        @include tablet {
+          left: -68px;
+        }
+        @include tablet-sm {
+          left: -75px;
+        }
+        @include mobile {
+          left: 0;
+          top: -5px;
+        }
+      }
+      .page__bg-right {
+        @include desktop {
+          right: -40px;
+        }
+        @include tablet {
+          right: -110px;
+        }
+        @include tablet-sm {
+          right: -150px;
+        }
+        @include mobile {
+          right: 0;
+          top: 25px;
+        }
+      }
+    }
+    &_w_opacity {
+      opacity: 0.2;
+    }
+  }
+}
+
+.form-wrap {
+  background-image: linear-gradient(0deg, #384e5c 0%, #4e6d80 100%);
+  min-width: 1px;
+  border-radius: 8px;
+  padding: 67px 50px 40px;
+  margin: auto auto 32px;
+}
+.check-mark {
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: $green3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  @include mobile {
+    margin-right: 5px;
+  }
+  svg {
+    fill: #fff;
+  }
+}

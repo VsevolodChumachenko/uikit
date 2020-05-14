@@ -1,0 +1,83 @@
+@import 'vars';
+
+$xs: 767px;
+$sm: 1023px;
+$md: 1226px;
+$lg: 1439px;
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$xs}) {
+    @content;
+  }
+}
+
+@mixin tablet-sm {
+  @media (max-width: #{$sm}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$md}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: #{$lg}) {
+    @content;
+  }
+}
+
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+%containers-shadow {
+  background: $white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+}
+
+%fill-component-layout {
+  background: #ffffff;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  @include tablet-sm {
+    background: transparent;
+    box-shadow: none;
+  }
+}

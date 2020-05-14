@@ -1,0 +1,10 @@
+.v--modal-box {
+  padding: 36px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #fafafa;
+  max-width: 100%;
+}
+.v--modal-overlay {
+  z-index: 9999 !important;
+}

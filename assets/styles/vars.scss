@@ -1,0 +1,65 @@
+$base: #31322f;
+$grey: #d3d7cd;
+$grey2: rgba(#282828, 0.5);
+$grey3: #f9f9f9;
+$grey4: #767873;
+$grey5: #384e5c;
+$white: #fff;
+$black: #000;
+$green: #7ec728;
+$green2: #67b600;
+$green3: #6db51d;
+$green3-o3: rgba(#6db51d, 0.3);
+$light-green: #f0f6e7;
+$light-green2: rgba(#56e23d, 0.2);
+$light-green3: #aed682;
+$red: #fe0d32;
+$orange: #ff5c00;
+
+$light-grey-text: #959792;
+$grey-border: rgba(#8e8e8e, 0.25);
+$separator: #979797;
+$noticeBg: #fffbcf;
+$borderGrey: #d3d3d3;
+$borderGrey2: #eaeaea;
+$borderGrey3: #ccc;
+$borderGreen: #dff1c9;
+$borderGreen2: #b8e986;
+$tooltipBg: #f0f6e7; //same as $light-green
+$featuresBg: #f0f6e7; //same as $light-green
+$labelColor: #9b9b9b;
+$subtitleColor: #959792;
+$labelColorActive: $subtitleColor;
+
+$activeOfferBorder: #2e88f8;
+$activeOfferBg: #b0deff;
+
+$popularOfferBorder: #65e1c7;
+$popularOfferBg: #00b28a;
+$popularBadgeBg: #50e3c2;
+$popularBadgeBorder: #65e1c7;
+$popularBadgeColor: #00bf94;
+$popularBadgeIcon: #04c095;
+
+$expertOfferBorder: #2e88f8;
+$expertOfferBg: #2e88f8; //same as $expertOfferBorder
+$expertBadgeBg: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIyNTZweCIgaGVpZ2h0PSIzNXB4IiB2aWV3Qm94PSIwIDAgMjU2IDM1IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPiAgICAgICAgPHRpdGxlPlJlY3RhbmdsZSAyIENvcHkgMTg8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGcgaWQ9Im9zYWdvLWNhcmRzIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsLW9wYWNpdHk9IjAuMTUwMjQwMzg1Ij4gICAgICAgIDxnIGlkPSJvZmZlcjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03MjcuMDAwMDAwLCAtNTEyLjAwMDAwMCkiIGZpbGw9IiMyRTg4RjgiIHN0cm9rZT0iIzJFODhGOCI+ICAgICAgICAgICAgPHBhdGggZD0iTTg3MS44MzcwNDQsNjU2LjgzNzA0NCBMODcxLjgzNzA0NCw0MDIuMTYyOTU4IEw4NTAuMDQ0NzcyLDQwMi4xNjMwNjkgQzg0OC4yMDUzMzIsNDAyLjE2MzA3OCA4NDYuNjc5NzgyLDQwMy41ODY5NTIgODQ2LjU1MzEsNDA1LjQyMjAyNSBMODM3LjgzNTc3NCw1MzEuNjI3MzQxIEw4NDYuNTQ0ODQsNjUzLjU4NjM0NCBDODQ2LjY3NTYzNCw2NTUuNDE3OTQgODQ4LjE5OTY4OSw2NTYuODM3MDQ0IDg1MC4wMzU5NSw2NTYuODM3MDQ0IEw4NzEuODM3MDQ0LDY1Ni44MzcwNDQgWiIgaWQ9IlJlY3RhbmdsZS0yLUNvcHktMTgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDg1NC44MzcwNDQsIDUyOS41MDAwMDApIHJvdGF0ZSgtOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTg1NC44MzcwNDQsIC01MjkuNTAwMDAwKSAiPjwvcGF0aD4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==);
+$expertBadgeBorder: #2e88f8; //same as $expertOfferBorder
+$expertBadgeColor: #2e88f8; //same as $expertOfferBorder
+$expertBadgeIcon: #2e88f8; //same as $expertOfferBorder
+
+$btnSecondary: #8094a0;
+$btnSecondaryHover: #97a8b3;
+$btnPrimary: $green2;
+$btnPrimaryHover: #8dd538;
+$bthGhost: $white;
+$btnGhostHover: #f2f5ee;
+
+$dark-blue: #4a687b;
+$grey-inactive: #cacaca;
+
+$backgroundGrey: #f8f8f8;
+
+$breadCrumbColor: #959792;
+
+$secondaryFont: 'ALS Schlange', sans-serif;
