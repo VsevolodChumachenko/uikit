@@ -14,11 +14,30 @@
 <script>
 export default {
   props: {
-    theme: { type: String, default: 'primary' },
-    as: { type: String, default: 'button' },
-    loading: { type: Boolean, default: false },
-    disabled: { type: Boolean, default: false },
-    block: { type: Boolean, default: false },
+    theme: {
+      type: String,
+      default: 'primary',
+    },
+    size: {
+      type: String,
+      default: 'md',
+    },
+    as: {
+      type: String,
+      default: 'button',
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    block: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

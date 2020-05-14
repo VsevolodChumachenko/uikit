@@ -8,19 +8,15 @@ module.exports = [
     exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file),
     use: {
       loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env', 'vue'],
+      },
     },
-  },
-  {
-    test: /\.ts$/,
-    loader: 'ts-loader',
-    options: { appendTsSuffixTo: [/\.vue$/] },
   },
   {
     test: /\.scss$/,
     use: [
-      process.env.NODE_ENV !== 'production'
-        ? 'vue-style-loader'
-        : MiniCSSExtractPlugin.loader,
+      'vue-style-loader',
       'css-loader',
       {
         loader: 'postcss-loader',
@@ -46,7 +42,13 @@ module.exports = [
   },
   {
     test: /\.pug$/,
-    loader: 'pug-plain-loader',
+    oneOf: [
+      // это применяется к `<template lang="pug">` в компонентах Vue
+      {
+        resourceQuery: /^\?vue/,
+        use: ['pug-plain-loader'],
+      },
+    ],
   },
   {
     enforce: 'pre',

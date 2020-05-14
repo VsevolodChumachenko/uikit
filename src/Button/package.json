@@ -3,9 +3,9 @@
   "version": "1.0.5",
   "description": "",
   "main": "dist/main.bundle.js",
-  "module": "src/index.js",
+  "module": "src/index.vue",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack -p --config ../../webpack.config.js ",
+    "build": "webpack -p --config ../../webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vsevolod Chumachenko",
@@ -13,5 +13,6 @@
   "dependencies": {
     "lerna": "^3.21.0"
   },
-  "gitHead": "a7364a0fadd04c0b5313841e7c70c0f56188288f"
+  "gitHead": "a7364a0fadd04c0b5313841e7c70c0f56188288f",
+  "sideEffects": false
 }

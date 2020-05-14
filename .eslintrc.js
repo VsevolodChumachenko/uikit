@@ -6,16 +6,11 @@ module.exports = {
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    parser: 'babel-eslint',
+    ecmaVersion: 2020,
   },
-  extends: [
-    'plugin:prettier/recommended',
-    'prettier',
-    'prettier/vue',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
-  plugins: ['vue', 'import', 'prettier', '@typescript-eslint'],
+  extends: ['plugin:prettier/recommended', 'prettier', 'prettier/vue'],
+  plugins: ['vue', 'import', 'prettier'],
   // add your custom rules here
   rules: {
     'no-console': 'warn',
