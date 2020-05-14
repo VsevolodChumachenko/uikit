@@ -1,6 +1,6 @@
 {
   "name": "@uikit/button",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/main.bundle.js",
   "module": "src/index.js",
