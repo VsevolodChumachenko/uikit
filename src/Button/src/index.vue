@@ -11,5 +11,5 @@
             slot
 </template>
 
-<script src="./button.js" lang="ts"></script>
+<script src="./button.js"></script>
 <style src="./styles.scss" lang="scss"></style>
