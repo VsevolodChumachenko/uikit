@@ -12,12 +12,7 @@
 </template>
 
 <script>
-import Spinner from '@uikit/spinner';
-
 export default {
-  components: {
-    Spinner,
-  },
   props: {
     /**
      * Color theme of button

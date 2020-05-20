@@ -10,7 +10,8 @@
   "author": "Vsevolod Chumachenko",
   "license": "MIT",
   "dependencies": {
-    "lerna": "^3.21.0"
+    "lerna": "^3.21.0",
+    "@uikit/spinner": "^1.0.1"
   },
   "gitHead": "a7364a0fadd04c0b5313841e7c70c0f56188288f",
   "sideEffects": false
