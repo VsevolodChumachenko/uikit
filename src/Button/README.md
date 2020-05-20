@@ -1,3 +1,5 @@
-#Button component
+#Button
+
 ## Usage
-Import component with: `import Button from "@vchumachenko/button"`;
+
+Import component with: `import Button from "@uikit/button"`;
