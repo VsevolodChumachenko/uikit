@@ -1,0 +1,17 @@
+{
+  "name": "@uikit/spinner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.common.js",
+  "module": "src/index.vue",
+  "scripts": {
+    "build": "vue-cli-service build --mode production --name index --formats commonjs --target lib ./src/index.vue"
+  },
+  "author": "Vsevolod Chumachenko",
+  "license": "MIT",
+  "dependencies": {
+    "lerna": "^3.21.0"
+  },
+  "gitHead": "a7364a0fadd04c0b5313841e7c70c0f56188288f",
+  "sideEffects": false
+}
