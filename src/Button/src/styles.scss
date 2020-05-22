@@ -18,8 +18,7 @@
   $themes: (
     (primary, $btnPrimary, $white, $btnPrimaryHover, $btnPrimary),
     (secondary, $btnSecondary, $white, $btnSecondaryHover, $btnSecondary),
-    (ghost, $bthGhost, $green, $btnGhostHover, #dde3d5),
-    (registration, $bthGhost, $black, $btnGhostHover, $green3-o3)
+    (ghost, $bthGhost, $green, $btnGhostHover, #dde3d5)
   );
   @each $name, $bg, $color, $hover, $borderColor in $themes {
     &.#{$name} {
@@ -73,17 +72,5 @@
   &.block {
     width: 100%;
     display: block;
-  }
-  &.registration {
-    font-weight: normal;
-    font-style: normal;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    padding: 0 25px;
-    @include mobile {
-      border-width: 2px;
-      height: 70px;
-    }
   }
 }

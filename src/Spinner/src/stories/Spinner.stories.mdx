@@ -1,0 +1,105 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Spinner from '@uikit/spinner';
+import { withKnobs, select } from '@storybook/addon-knobs';
+
+<Meta title="Spinner" component={Spinner} />
+
+# Spinner
+
+Spinner `Vue` component with 2 sizes and inline position
+
+<Preview>
+  <Story name="default" decorators={[withKnobs]} height="100px">
+    {{
+      props: {
+        size: {
+          default: select('Size', ['md', 'sm'], 'md'),
+        },
+      },
+      template: '<spinner :size="size"/>',
+    }}
+  </Story>
+</Preview>
+
+## Links
+
+- [Usage](#usage)
+- [Props](#props)
+
+## Usage
+
+Install component
+
+```
+npm i @uikit/spinner
+
+yarn add @uikit/spinner
+```
+
+---
+
+Import component into your parent component.
+
+```js
+import Spinner from '@uikit/button';
+export default {
+  components: {
+    Spinner,
+  },
+};
+```
+
+or register it globally after `@uikit/spinner`
+
+```js
+import Vue from 'vue';
+import Spinner from '@uikit/spinner';
+
+Vue.component('spinner', Spinner);
+```
+
+---
+
+Then use it in your `template`
+
+```html
+<spinner :inline="true" size="sm" />
+```
+
+## Props
+
+<Props of={Spinner} />
+
+## 2 sizes
+
+Spinner has to `size`s `md` and `sm`
+
+<Preview>
+  <Story height="170px" name="2 sizes">
+    {{
+      template: `
+        <div>
+          <div style="position: relative; height: 70px"><spinner size="sm" /></div>
+          <div style="position: relative; height: 100px;"><spinner size="md" /></div>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Inline spinner
+
+Available to use it in text, by passing `:inline="true"`
+
+<Preview>
+  <Story height="30px" name="inline">
+    {{
+      template: `
+        <div>
+          <spinner size="sm" :inline="true"/>
+          Some text
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>

@@ -1,0 +1,16 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs } from '@storybook/addon-knobs';
+import Input from '@uikit/input';
+import { InteractiveStory } from './Input.story';
+
+<Meta title="Input" component={Input} />
+
+#Input
+
+`Vue` component input with `IMask`, `vuelidate`, transforms and other features
+
+<Preview>
+  <Story name="interactive" height="150px">
+    {InteractiveStory}
+  </Story>
+</Preview>

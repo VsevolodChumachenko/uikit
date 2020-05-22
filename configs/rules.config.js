@@ -6,12 +6,6 @@ module.exports = [
   {
     test: /\.js$/,
     exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file),
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env', 'vue'],
-      },
-    },
   },
   {
     test: /\.scss$/,

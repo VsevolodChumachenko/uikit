@@ -2,171 +2,32 @@ import Button from '@uikit/button';
 import { action } from '@storybook/addon-actions';
 import './styles.story.scss';
 
+const themes = ['primary', 'secondary', 'ghost'];
+const sizes = ['md', 'sm', 'xs', 'xxs'];
+
+const data = () => {
+  return { themes, sizes };
+};
+
 export const AllButtons = () => ({
   components: { 'base-button': Button },
+  data,
   template: `
     <table class="story__table">
       <thead>
       <tr>
         <th></th>
-        <th>Primary</th>
-        <th>Secondary</th>
-        <th>Ghost</th>
-        <th>Registration</th>
+        <th v-for="theme of themes">{{ theme }}</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>md</td>
-        <td>
+      <tr v-for="size of sizes">
+        <td>{{size}}</td>
+        <td v-for="theme of themes">
           <base-button
             @click="action"
-            theme="primary"
-            size="md"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="secondary"
-            size="md"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="ghost"
-            size="md"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="registration"
-            size="md"
-          >
-            Hello Button
-          </base-button>
-        </td>
-      </tr>
-      <tr>
-        <td>sm</td>
-        <td>
-          <base-button
-            @click="action"
-            theme="primary"
-            size="sm"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="secondary"
-            size="sm"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="ghost"
-            size="sm"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="registration"
-            size="sm"
-          >
-            Hello Button
-          </base-button>
-        </td>
-      </tr>
-      <tr>
-        <td>xs</td>
-        <td>
-          <base-button
-            @click="action"
-            theme="primary"
-            size="xs"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="secondary"
-            size="xs"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="ghost"
-            size="xs"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="registration"
-            size="xs"
-          >
-            Hello Button
-          </base-button>
-        </td>
-      </tr>
-      <tr>
-        <td>xxs</td>
-        <td>
-          <base-button
-            @click="action"
-            theme="primary"
-            size="xxs"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="secondary"
-            size="xxs"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="ghost"
-            size="xxs"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="registration"
-            size="xxs"
+            :theme="theme"
+            :size="size"
           >
             Hello Button
           </base-button>
@@ -180,185 +41,55 @@ export const AllButtons = () => ({
 
 export const LoadingButtons = () => ({
   components: { 'base-button': Button },
+  data,
   template: `
     <table class="story__table">
       <thead>
       <tr>
         <th></th>
-        <th>Primary</th>
-        <th>Secondary</th>
-        <th>Ghost</th>
-        <th>Registration</th>
+        <th v-for="theme of themes">{{ theme }}</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>md</td>
-        <td>
+      <tr v-for="size of sizes">
+        <td>{{size}}</td>
+        <td v-for="theme of themes">
           <base-button
             @click="action"
-            theme="primary"
-            size="md"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="secondary"
-            size="md"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="ghost"
-            size="md"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="registration"
-            size="md"
+            :theme="theme"
+            :size="size"
             :loading="true"
           >
             Hello Button
           </base-button>
         </td>
       </tr>
+      </tbody>
+    </table>
+  `,
+  methods: { action: action('clicked') },
+});
+
+export const DisabledButtons = () => ({
+  components: { 'base-button': Button },
+  data,
+  template: `
+    <table class="story__table">
+      <thead>
       <tr>
-        <td>sm</td>
-        <td>
-          <base-button
-            @click="action"
-            theme="primary"
-            size="sm"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="secondary"
-            size="sm"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="ghost"
-            size="sm"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="registration"
-            size="sm"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
+        <th></th>
+        <th v-for="theme of themes">{{ theme }}</th>
       </tr>
-      <tr>
-        <td>xs</td>
-        <td>
+      </thead>
+      <tbody>
+      <tr v-for="size of sizes">
+        <td>{{size}}</td>
+        <td v-for="theme of themes">
           <base-button
             @click="action"
-            theme="primary"
-            size="xs"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="secondary"
-            size="xs"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="ghost"
-            size="xs"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="registration"
-            size="xs"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-      </tr>
-      <tr>
-        <td>xxs</td>
-        <td>
-          <base-button
-            @click="action"
-            theme="primary"
-            size="xxs"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="secondary"
-            size="xxs"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="ghost"
-            size="xxs"
-            :loading="true"
-          >
-            Hello Button
-          </base-button>
-        </td>
-        <td>
-          <base-button
-            @click="action"
-            theme="registration"
-            size="xxs"
-            :loading="true"
+            :theme="theme"
+            :size="size"
+            :disabled="true"
           >
             Hello Button
           </base-button>

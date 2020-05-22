@@ -6,7 +6,7 @@
     :disabled="props.disabled || props.loading"
     v-bind="data.attrs"
   )
-    Spinner(v-if="props.loading" size="sm" type="inline")
+    spinner(v-if="props.loading" size="sm" type="inline")
     span(:class="{loading: props.loading}")
       slot
 </template>

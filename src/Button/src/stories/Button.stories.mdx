@@ -1,25 +1,80 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
+import { AllButtons, LoadingButtons, DisabledButtons } from './Button.story';
 import Button from '@uikit/button';
-import { AllButtons, LoadingButtons } from './Button.story';
 
 <Meta title="Button" component={Button} />
 
 # Button
 
-With `MDX` we can define a story for `Checkbox` right in the middle of our
-markdown documentation.
+Button `Vue` component with 4 themes and 4 sizes
 
-<Story name="All buttons">{AllButtons}</Story>
+<Preview>
+  <Story name="default" decorators={[withKnobs]} height="70px">
+    {{
+      props: {
+        size: {
+          default: select('Size', ['md', 'sm', 'xs', 'xxs'], 'md'),
+        },
+        theme: {
+          default: select(
+            'Theme',
+            ['primary', 'secondary', 'ghost'],
+            'primary'
+          ),
+        },
+        isLoading: {
+          default: boolean('Loading', false),
+        },
+        isDisabled: {
+          default: boolean('Disabled', false),
+        },
+        text: {
+          default: text('Text', 'Hello button'),
+        },
+      },
+      template: `
+        <base-button
+          :size="size"
+          :theme="theme"
+          :loading="isLoading"
+          :disabled="isDisabled"
+        >
+          {{text}}
+        </base-button>`,
+    }}
+  </Story>
+</Preview>
+
+## Links
+
+- [Usage](#usage)
+- [Props](#props)
+- [Loading Buttons](#loading-buttons)
+- [Disabled Buttons](#disabled-buttons)
 
 ## Usage
 
 Install component
 
 ```
-npm i @uikit/button
+npm i @uikit/button @uikit/spinner
 
-yarn add @uikit/button
+yarn add @uikit/button @uikit/spinner
 ```
+
+> **NOTE**
+>
+> It works with only with global register `@uikit/spinner` component
+>
+> ```js
+> import Vue from 'vue';
+> import Spinner from '@uikit/spinner';
+>
+> Vue.component('spinner', Spinner);
+> ```
+
+---
 
 Import component into your parent component.
 
@@ -33,6 +88,19 @@ export default {
   },
 };
 ```
+
+or register it globally after `@uikit/spinner`
+
+```js
+import Vue from 'vue';
+import Spinner from '@uikit/spinner';
+import Button from '@uikit/button';
+
+Vue.component('spinner', Spinner);
+Vue.component('base-button', Button);
+```
+
+---
 
 Then use it in your `template`
 
@@ -51,6 +119,38 @@ Then use it in your `template`
 
 <Props of={Button} />
 
+## AllButtons
+
+<Preview>
+  <Story name="all" height="350px">
+    {AllButtons}
+  </Story>
+</Preview>
+
 ## Loading Buttons
 
-<Story name="Buttons loading">{LoadingButtons}</Story>
+When `loading` property is `true`
+
+> **NOTE**
+>
+> When `button` is `loading` or `disabled` `@click` events stop to bubble
+
+<Preview>
+  <Story height="350px" name="loading">
+    {LoadingButtons}
+  </Story>
+</Preview>
+
+## Disabled buttons
+
+When `disabled` property is `true`
+
+> **NOTE**
+>
+> When `button` is `loading` or `disabled` `@click` events stop to bubble
+
+<Preview>
+  <Story height="350px" name="disabled">
+    {DisabledButtons}
+  </Story>
+</Preview>
