@@ -1,6 +1,6 @@
 {
   "name": "@uikit/button",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "dist/index.common.js",
   "module": "src/index.vue",
