@@ -8,5 +8,6 @@
     "build": "vue-cli-service build --mode production --name index --formats commonjs --target lib ./src/index.vue"
   },
   "author": "Vsevolod Chumachenko",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "2ae64a393e10cfddbb75ce5f3a50ee054dc25082"
 }
