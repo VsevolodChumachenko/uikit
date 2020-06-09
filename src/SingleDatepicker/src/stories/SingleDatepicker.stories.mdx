@@ -1,0 +1,132 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs } from '@storybook/addon-knobs';
+import SingleDatepicker from '@strahovkaru/single-datepicker';
+import {
+  DefaultStory,
+  OutlinedStory,
+  RegistrationStory,
+  DisabledStory,
+  InvalidStory,
+} from './SingleDatepicker.story';
+
+<Meta
+  title="SingleDatepicker"
+  component={SingleDatepicker}
+  parameters={{
+    backgrounds: {
+      default: 'registration',
+      values: [
+        { name: 'dark', value: '#384e5c' },
+        { name: 'white', value: '#fff' },
+        { name: 'registration', value: '#f9f9f9' },
+      ],
+    },
+  }}
+/>
+
+# Input
+
+`Vue` component datepicker
+
+<Preview>
+  <Story
+    name="default"
+    height="90px"
+    parameters={{
+      backgrounds: {
+        default: 'dark',
+      },
+    }}
+  >
+    {DefaultStory}
+  </Story>
+  <Story
+    name="outlined"
+    height="90px"
+    parameters={{
+      backgrounds: {
+        default: 'white',
+      },
+    }}
+  >
+    {OutlinedStory}
+  </Story>
+  <Story name="registration" height="90px">
+    {RegistrationStory}
+  </Story>
+</Preview>
+
+## Usage
+
+Install component
+
+```
+npm i @strahovkaru/input
+
+yarn add @strahovkaru/input
+```
+
+> **NOTE**
+>
+> For validation you have to use `Vuelidate` https://vuelidate.js.org/
+
+---
+
+Import component into your parent component.
+
+```js
+import Input from '@strahovkaru/input';
+export default {
+  components: {
+    Button,
+    //or
+    'base-input': Input,
+  },
+};
+```
+
+or register it globally
+
+```js
+import Vue from 'vue';
+import Input from '@strahovkaru/input';
+
+Vue.component('base-input', Input);
+```
+
+---
+
+Then use it in your `template`
+
+```html
+<base-input
+  v-model="$v.value.$model"
+  :meta="$v.value"
+  label="Label"
+  error="Поле обязательно для заполнения"
+/>
+```
+
+## Props
+
+<Props of={SingleDatepicker} />
+
+## Disabled buttons
+
+When the `disabled` property is `true`
+
+<Preview>
+  <Story name="disabled" height="150px">
+    {DisabledStory}
+  </Story>
+</Preview>
+
+## Invalid
+
+Invalid state of `input`. Using `Vuelidate`
+
+<Preview>
+  <Story name="invalid" height="150px">
+    {InvalidStory}
+  </Story>
+</Preview>

@@ -1,7 +1,7 @@
 <template lang="pug">
   .input(:class="classes")
-    label.inner(:class="theme")
-      imask-input.field(
+    label.input__inner
+      imask-input.input__field(
         v-autowidth="autosizeOpts"
         @focus="focus"
         @blur="blur"
@@ -13,11 +13,12 @@
         v-bind="$attrs"
         tabindex="0"
       )
-      span.postfix(v-if='postfix && showPostfix' v-html="'&nbsp;' + postfix")
-      .label(v-html="label")
-    p.error(v-if="isInvalid && error.length !== 0")
+      | &nbsp;
+      span.input__postfix(v-if='postfix && showPostfix' v-html="postfix")
+      .input__label(v-html="label")
+    p.input__error(v-if="isInvalid && error.length !== 0")
       | {{error}}
-    p.prompt(v-if="error.length === 0")
+    p.input__prompt(v-else)
       | {{prompt}}
 </template>
 

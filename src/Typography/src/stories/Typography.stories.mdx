@@ -1,0 +1,163 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, text } from '@storybook/addon-knobs';
+import Typography from '@strahovkaru/typography';
+const typographyTypes = [
+  'h1',
+  'h2',
+  'h2-n',
+  'h3',
+  'h4',
+  'h5',
+  'text',
+  'caption',
+  'subtitle',
+];
+const typographyAligns = ['left', 'center', 'right', 'justify', 'inherit'];
+
+<Meta
+  title="Typography"
+  component={Typography}
+  parameters={{
+    backgrounds: {
+      default: 'white',
+      values: [
+        { name: 'dark', value: '#384e5c' },
+        { name: 'white', value: '#fff' },
+        { name: 'registration', value: '#f9f9f9' },
+      ],
+    },
+  }}
+/>
+
+# Input
+
+`Vue` typography component
+
+<Preview>
+  <Story name="interactive" height="90px" decorators={[withKnobs]}>
+    {{
+      components: { Typography },
+      props: {
+        text: {
+          default: text('Text', 'Текст в заголовке'),
+        },
+        tagName: {
+          default: select(
+            'Tag',
+            ['p', 'span', 'h1', 'h2', 'h3', 'h4', 'h5'],
+            'p'
+          ),
+        },
+        type: {
+          default: select(
+            'Type',
+            [
+              'h1',
+              'h2',
+              'h2-n',
+              'h3',
+              'h4',
+              'h5',
+              'text',
+              'caption',
+              'subtitle',
+            ],
+            'h1'
+          ),
+        },
+        align: {
+          default: select(
+            'Align',
+            ['left', 'center', 'right', 'justify', 'inherit'],
+            'left'
+          ),
+        },
+      },
+      template: `<typography :tag-name="tagName" :align="align" :type="type">{{text}}</typography>`,
+    }}
+  </Story>
+</Preview>
+
+## Usage
+
+Install component
+
+```
+npm i @strahovkaru/typography
+
+yarn add @strahovkaru/typography
+```
+
+---
+
+Import component into your parent component.
+
+```js
+import Input from '@strahovkaru/typography';
+export default {
+  components: {
+    Typography,
+  },
+};
+```
+
+or register it globally
+
+```js
+import Vue from 'vue';
+import Input from '@strahovkaru/typography';
+
+Vue.component('typography', Typography);
+```
+
+---
+
+Then use it in your `template`
+
+```html
+<typography align="left" type="h1" tag-name="p">Какой-то текст</typography>
+```
+
+## Props
+
+<Props of={Typography} />
+
+## Types
+
+All typography types that are enabled
+
+<Preview>
+  <Story name="types">
+    {{
+      components: { Typography },
+      data() {
+        return { typographyTypes };
+      },
+      template: `
+        <div>
+          <typography v-for="type of typographyTypes" tag-name="p" align="left" :type="type">Это тип &mdash; {{type}}</typography>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Aligns
+
+All typography aligns
+
+<Preview>
+  <Story name="aligns">
+    {{
+      components: { Typography },
+      data() {
+        return { aligns: typographyAligns };
+      },
+      template: `
+        <div>
+          <typography v-for="align of aligns" tag-name="p" :align="align" type="h1">Это align &mdash; {{align}}</typography>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>

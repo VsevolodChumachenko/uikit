@@ -1,31 +1,22 @@
 .input {
+  $p: &;
+
   position: relative;
   width: 100%;
 
-  .inner {
+  &__inner {
     height: 64px;
     border-radius: 6px;
     background: #fff;
     padding: 10px 17px 10px 16px;
     overflow: hidden;
     position: relative;
+    z-index: 1;
     cursor: text;
     display: flex;
     align-items: baseline;
     @include mobile {
       height: 56px;
-    }
-
-    &.outline {
-      border: 1px solid #e5e7e8;
-    }
-
-    &.secondary {
-      background: transparent;
-
-      .field {
-        background: transparent;
-      }
     }
 
     &::after {
@@ -41,29 +32,33 @@
     }
   }
 
-  .field {
+  &__field {
     background: #fff;
     height: auto;
     width: 100%;
     border: none;
     font-size: 17px;
     font-weight: 600;
-    padding-top: 23px;
+    padding-top: 20px;
+    box-sizing: content-box;
+    color: $base;
+
     @include placeholder {
       color: $base;
     }
 
     @include mobile {
-      padding-top: 14px;
+      padding-top: 15px;
     }
 
     &:focus {
-      & ~ .label {
+      & ~ #{$p}__label {
         font-size: 12px;
+        line-height: 15px;
         color: #767873;
-        top: 16px;
+        top: 14px;
         @include mobile {
-          top: 8px;
+          top: 10px;
         }
       }
     }
@@ -72,7 +67,7 @@
       opacity: 0.4;
       cursor: text;
 
-      & ~ .label {
+      & ~ #{$p}__label {
         opacity: 0.4;
 
         &::after {
@@ -82,134 +77,119 @@
     }
   }
 
-  .label {
+  &__label {
     position: absolute;
-    pointer-events: none;
     left: 17px;
-    top: 26px;
+    top: 24px;
     font-size: 15px;
-    transition: 0.15s ease-in-out;
-    white-space: nowrap;
+    line-height: 19px;
     color: $base;
+    transition: 0.15s ease-in-out;
+    pointer-events: none;
+    white-space: nowrap;
+
     @include mobile {
-      top: 21px;
+      top: 20px;
     }
   }
 
-  .error {
+  &__error {
     position: absolute;
     text-align: left;
     top: 100%;
     background: $white;
     font-size: 14px;
-    z-index: 1000;
     box-shadow: 0 0 12px 0 rgba($black, 0.15);
     border-radius: 0 0 5px 5px;
     width: 100%;
     left: 0;
     color: $base;
 
+    @include mobile {
+      top: calc(100% + 6px);
+      border-radius: 5px;
+      text-align: center;
+    }
+
     &:not(:empty) {
       padding: 12px 16px;
     }
 
-    @include mobile {
-      display: none;
-    }
-  }
-
-  .prompt {
-    font-size: 14px;
-    line-height: 30px;
-    color: $labelColorActive;
-  }
-
-  .postfix {
-    font-weight: 600;
-  }
-
-  .hint {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    background: rgba($green2, 0.1);
-    border-radius: 50%;
-    margin-left: 10px;
-    position: absolute;
-    top: 30px;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    svg {
-      fill: $green2;
-    }
-  }
-
-  &.isActive {
-    .label {
-      font-size: 12px;
-      color: #767873;
-      top: 16px;
+    &::after {
       @include mobile {
-        top: 8px;
-      }
-    }
-
-    &.small {
-      .label {
-        top: 8px;
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border: solid transparent;
+        border-width: 0 7px 6px;
+        border-bottom-color: $white;
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }
 
-  &.isValid {
-    .inner {
+  &__prompt {
+    display: none;
+  }
+
+  &__postfix {
+    font-size: 17px;
+    font-weight: 600;
+
+    /deep/sup,
+    /deep/sub {
+      font-size: smaller;
+    }
+  }
+
+  //.hint {
+  //  display: inline-flex;
+  //  align-items: center;
+  //  justify-content: center;
+  //  width: 16px;
+  //  height: 16px;
+  //  background: rgba($green2, 0.1);
+  //  border-radius: 50%;
+  //  margin-left: 10px;
+  //  position: absolute;
+  //  top: 30px;
+  //
+  //  &:hover {
+  //    cursor: pointer;
+  //  }
+  //
+  //  svg {
+  //    fill: $green2;
+  //  }
+  //}
+
+  &_state_active {
+    #{$p}__label {
+      font-size: 12px;
+      line-height: 15px;
+      color: #767873;
+      top: 14px;
+      @include mobile {
+        top: 10px;
+      }
+    }
+  }
+
+  &_state_focused {
+    #{$p}__inner {
       &::after {
+        background-color: $green;
         transform: scale(1);
       }
-
-      &.secondary {
-        &::after {
-          transform: scale(0);
-        }
-      }
     }
   }
 
-  &.isInvalid {
-    .inner {
-      &::after {
-        background-color: $red;
-        transform: scale(1);
-      }
-    }
-  }
-
-  &.isFocus {
-    .inner {
-      &::after {
-        background-color: $base;
-        transform: scale(1);
-      }
-
-      &.secondary {
-        &::after {
-          transform: scale(0);
-        }
-      }
-    }
-
-    .hint {
-      display: none;
-    }
-  }
-
-  &.has-error {
-    .inner {
+  &_state_has-error {
+    #{$p}__inner {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
 
@@ -220,36 +200,75 @@
     }
   }
 
-  &.small {
-    .inner {
+  &_valid_true {
+    #{$p}__inner {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &_valid_false {
+    #{$p}__inner::after {
+      background-color: $red;
+      transform: scale(1);
+    }
+  }
+
+  &_size_small {
+    #{$p}__inner {
       height: 56px;
     }
 
-    .label {
+    #{$p}__label {
       top: 21px;
     }
 
-    .field:focus {
-      & ~ .label {
+    #{$p}__field {
+      padding-top: 16px;
+
+      &:focus ~ #{$p}__label {
+        top: 8px;
+      }
+    }
+
+    &#{$p}_state_active {
+      #{$p}__label {
         top: 8px;
       }
     }
   }
 
-  &.registration {
-    border-radius: 0;
-    background-color: transparent;
-    @include mobile {
-      height: 64px;
+  &_theme_outlined {
+    background: transparent;
+
+    #{$p}__inner {
+      border: 1px solid #e5e7e8;
     }
 
-    .inner {
+    #{$p}__error {
+      border: 1px solid #e5e7e8;
+      border-top: 0;
+    }
+
+    &#{$p}_state_has-error #{$p}__inner,
+    &#{$p}_state_focused #{$p}__inner {
+      border-bottom: 0;
+    }
+  }
+
+  &_theme_registration {
+    border-radius: 0;
+    background-color: transparent;
+
+    #{$p}__inner {
+      height: 61px;
       border-radius: 0;
       padding: 0;
       background-color: transparent;
 
       @include mobile {
-        height: 64px;
+        height: 55px;
       }
 
       &::after {
@@ -258,99 +277,111 @@
       }
     }
 
-    .label {
+    #{$p}__label {
       font-size: 20px;
       line-height: 18px;
-      top: 32px;
-      // bottom: 14px;
+      top: 27px;
       left: 0;
-      color: $labelColorActive;
+      color: $base;
       display: flex;
       margin: 0;
+
       @include mobile {
         font-size: 16px;
+        top: 23px;
       }
     }
 
-    .field {
+    #{$p}__field {
       font-size: 20px;
       line-height: 18px;
       font-weight: 400;
       background: transparent;
-      padding-bottom: 13px;
-      padding-top: 41px;
+      padding-bottom: 14px;
+      padding-top: 27px;
       height: 18px;
       @include mobile {
         font-size: 16px;
         line-height: 18px;
-        padding-top: 43px;
-        padding-bottom: 11px;
+        padding-top: 23px;
+        padding-bottom: 12px;
+      }
+
+      &:focus ~ #{$p}__label {
+        font-size: 16px;
+        top: 0;
+        color: $labelColorActive;
+
+        @include mobile {
+          font-size: 14px;
+        }
       }
     }
 
-    .hint {
-      @include mobile {
-        top: 24px;
-      }
-    }
-
-    .prompt {
-      font-size: 13px;
-      line-height: 30px;
-      color: $light-grey-text;
-    }
-
-    & + .error {
+    #{$p}__error {
       background-color: transparent;
       box-shadow: none;
       font-size: 14px;
-      line-height: 30px;
+      line-height: 17px;
+      margin: 7px 0 6px;
       color: $base;
       padding: 0;
       position: static;
     }
 
-    &.filled {
-      .label {
-        font-size: 16px;
-        top: 6px;
-        color: $labelColorActive;
+    #{$p}__prompt {
+      font-size: 14px;
+      line-height: 17px;
+      margin: 7px 0 6px;
+      color: $light-grey-text;
+      display: block;
+    }
 
-        @include mobile {
-          line-height: 18px;
-          top: 14px;
-          height: 18px;
-          font-size: 14px;
-        }
+    #{$p}__postfix {
+      font-size: 20px;
+      font-weight: normal;
+    }
+
+    %label-active {
+      font-size: 16px;
+      top: 0;
+      color: $labelColorActive;
+
+      @include mobile {
+        font-size: 14px;
       }
     }
 
-    &.isFocus {
-      .label {
-        font-size: 16px;
-        top: 6px;
-        color: $labelColorActive;
-
-        @include mobile {
-          line-height: 18px;
-          top: 14px;
-          height: 18px;
-          font-size: 14px;
+    &#{$p}_state_focused {
+      #{$p}__inner {
+        &::after {
+          background-color: $base;
         }
+      }
+      #{$p}__label {
+        @extend %label-active;
       }
     }
 
-    &.isActive {
-      .label {
-        font-size: 16px;
-        bottom: 41px;
-        top: auto;
-        color: $labelColorActive;
+    &#{$p}_state_active {
+      #{$p}__label {
+        @extend %label-active;
+      }
+    }
 
-        @include mobile {
-          font-size: 14px;
-          bottom: 35px;
-        }
+    &#{$p}_valid_false {
+      #{$p}__inner:after {
+        background-color: $red;
+      }
+    }
+
+    &#{$p}_size_small {
+      #{$p}__inner {
+        height: 56px;
+      }
+
+      #{$p}__field {
+        padding-bottom: 9px;
       }
     }
   }

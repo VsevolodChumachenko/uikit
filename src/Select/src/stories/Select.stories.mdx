@@ -1,0 +1,411 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
+import { required } from 'vuelidate/lib/validators';
+import Select from '@strahovkaru/select';
+const defaultMixin = {
+  components: { 'base-select': Select },
+  data() {
+    return {
+      value: { text: '1', value: 1 },
+      list: [
+        { text: '1', value: 1 },
+        { text: '2', value: 2 },
+        { text: '3', value: 3 },
+        { text: '4', value: 4 },
+        { text: '5', value: 5 },
+        { text: '7', value: 6 },
+        { text: '11', value: 11 },
+        { text: '15', value: 15 },
+        { text: '21', value: 21 },
+        { text: '41', value: 41 },
+      ],
+      themes: ['default', 'outlined', 'registration'],
+    };
+  },
+};
+
+<Meta
+  title="Select"
+  component={Select}
+  parameters={{
+    backgrounds: {
+      default: 'registration',
+      values: [
+        { name: 'dark', value: '#384e5c' },
+        { name: 'white', value: '#fff' },
+        { name: 'registration', value: '#f9f9f9' },
+      ],
+    },
+  }}
+/>
+
+# Input
+
+`Vue` instance of `Vue-Multiselect` with `Vuelidate`
+
+<Preview>
+  <Story name="default" height="90px" decorators={[withKnobs]}>
+    {{
+      extends: defaultMixin,
+      props: {
+        label: {
+          default: text('Label', 'Заголовок'),
+        },
+        postfix: {
+          default: text('Postfix', ''),
+        },
+        theme: {
+          default: select(
+            'Theme',
+            ['', 'outlined', 'registration'],
+            'outlined'
+          ),
+        },
+        small: {
+          default: boolean('Small', false),
+        },
+        searchable: {
+          default: boolean('Searchable', false),
+        },
+      },
+      validations: {
+        value: {
+          required,
+        },
+      },
+      template: `
+        <base-select
+          v-model="$v.value.$model"
+          :input-label="label"
+          :meta="$v.value"
+          :searchable="searchable"
+          :theme="theme"
+          :options="list"
+          :small="small"
+          error="Поле обязательно для заполнения"
+          prompt="Какая-то подсказка"
+          postfix="год|года|лет"
+          style="min-width: 400px"/>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Usage
+
+Install component
+
+```
+npm i @strahovkaru/select
+
+yarn add @strahovkaru/select
+```
+
+> **NOTE**
+>
+> For validation you have to use `Vuelidate` https://vuelidate.js.org/
+
+---
+
+Import component into your parent component.
+
+```js
+import Select from '@strahovkaru/select';
+export default {
+  components: {
+    Select,
+    //or
+    'base-select': Select,
+  },
+};
+```
+
+or register it globally
+
+```js
+import Vue from 'vue';
+import Select from '@strahovkaru/select';
+
+Vue.component('base-select', Input);
+```
+
+---
+
+Then use it in your `template`
+
+```html
+<base-select
+  v-model="$v.value.$model"
+  :meta="$v.value"
+  :options="options"
+  input-label="Label"
+  error="Поле обязательно для заполнения"
+/>
+```
+
+## Props
+
+<Props of={Select} />
+
+## Disabled
+
+You have to set `disabled` property to `true`
+
+<Preview>
+  <Story name="disabled">
+    {{
+      extends: defaultMixin,
+      template: `
+        <form class="form">
+          <div class="row">
+            <div class="col col-xl-4" v-for="theme of themes">
+              <h3 style="margin-bottom: 10px">{{theme}}</h3>
+              <base-select
+                v-model="value"
+                input-label="Заголовок"
+                :theme="theme"
+                :options="list"
+                :disabled="true"
+                error="Поле обязательно для заполнения"
+                prompt="Какая-то подсказка"
+                postfix="год|года|лет"
+                style="min-width: 300px"
+              />
+            </div>
+          </div>
+        </form>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Small
+
+`small` property to `true`
+
+<Preview>
+  <Story name="small">
+    {{
+      extends: defaultMixin,
+      template: `
+        <form class="form">
+          <div class="row">
+            <div class="col col-xl-4" v-for="theme of themes">
+              <h3 style="margin-bottom: 10px">{{theme}}</h3>
+              <base-select
+                v-model="value"
+                input-label="Заголовок"
+                :meta="{$error: false, $touch() {}}"
+                :theme="theme"
+                :options="list"
+                :small="true"
+                error="Поле обязательно для заполнения"
+                prompt="Какая-то подсказка"
+                postfix="год|года|лет"
+                style="min-width: 300px"
+              />
+            </div>
+          </div>
+        </form>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Invalid
+
+Invalid state of select. `Vuelidate` `$meta` object is used
+
+<Preview>
+  <Story name="invalid">
+    {{
+      extends: defaultMixin,
+      template: `
+        <form class="form">
+          <div class="row">
+            <div class="col col-xl-4" v-for="theme of themes">
+              <h3 style="margin-bottom: 10px">{{theme}}</h3>
+              <base-select
+                v-model="value"
+                :meta="{$error: true, $touch() {}}"
+                input-label="Заголовок"
+                :theme="theme"
+                :options="list"
+                error="Поле обязательно для заполнения"
+                prompt="Какая-то подсказка"
+                postfix="год|года|лет"
+                style="min-width: 300px"
+              />
+            </div>
+          </div>
+        </form>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Searchable
+
+Set `searchable` property to true.
+
+<Preview>
+  <Story name="searchable">
+    {{
+      extends: defaultMixin,
+      template: `
+        <form class="form">
+          <div class="row">
+            <div class="col col-xl-4" v-for="theme of themes">
+              <h3 style="margin-bottom: 10px">{{theme}}</h3>
+              <base-select
+                v-model="value"
+                input-label="Заголовок"
+                :meta="{$error: false, $touch() {}}"
+                :searchable="true"
+                :theme="theme"
+                :options="list"
+                error="Поле обязательно для заполнения"
+                prompt="Какая-то подсказка"
+                postfix="год|года|лет"
+                style="min-width: 300px"
+              />
+            </div>
+          </div>
+        </form>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Multiple select
+
+Set `multiple` property to true.
+
+<Preview>
+  <Story name="multiple">
+    {{
+      extends: defaultMixin,
+      template: `
+        <form class="form">
+          <div class="row">
+            <div class="col col-xl-4" v-for="theme of themes">
+              <h3 style="margin-bottom: 10px">{{theme}}</h3>
+              <base-select
+                v-model="value"
+                input-label="Заголовок"
+                :meta="{$error: false, $touch() {}}"
+                :multiple="true"
+                :theme="theme"
+                :options="list"
+                error="Поле обязательно для заполнения"
+                prompt="Какая-то подсказка"
+                style="min-width: 300px"
+              />
+            </div>
+          </div>
+        </form>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Select with postfix
+
+`postfix` property is used like postfix for calculated values (like years). Example: `postfix="год|года|лет"` - postfix for age
+
+<Preview>
+  <Story name="postfix">
+    {{
+      extends: defaultMixin,
+      template: `
+        <form class="form">
+          <div class="row">
+            <div class="col col-xl-4" v-for="theme of themes">
+              <h3 style="margin-bottom: 10px">{{theme}}</h3>
+              <base-select
+                v-model="value"
+                input-label="Заголовок"
+                :meta="{$error: false, $touch() {}}"
+                :theme="theme"
+                :options="list"
+                error="Поле обязательно для заполнения"
+                prompt="Какая-то подсказка"
+                postfix="год|года|лет"
+                style="min-width: 300px"
+              />
+            </div>
+          </div>
+        </form>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Filter correction
+
+Filter correction is useful when you have words which can be written using by similar but different letters.
+For example `Таиланд` users are able to write it like `Тайланд`, so you use filter correction `[{key: 'Тай', value: 'Таи'}]`
+
+> **NOTE**
+>
+> Correction is sense insensitive
+
+<Preview>
+  <Story name="filter correction">
+    {{
+      extends: defaultMixin,
+      data() {
+        return {
+          value: {
+            text: 'Весь мир',
+            value: 'WORLDWIDE',
+          },
+          countries: [
+            {
+              text: 'Весь мир',
+              value: 'WORLDWIDE',
+            },
+            {
+              text: 'Шенген',
+              value: 'SCHENGEN',
+            },
+            {
+              text: 'США',
+              value: '49',
+            },
+            {
+              text: 'Турция',
+              value: '53',
+            },
+            {
+              text: 'Таиланд',
+              value: '50',
+            },
+          ],
+          filterCorrection: [{ key: /Тай/gi, value: 'Таи' }],
+        };
+      },
+      template: `
+        <form class="form">
+          <div class="row">
+            <div class="col col-xl-4" v-for="theme of themes">
+              <h3 style="margin-bottom: 10px">{{theme}}</h3>
+              <base-select
+                v-model="value"
+                input-label="Заголовок"
+                :meta="{$error: false, $touch() {}}"
+                :searchable="true"
+                :theme="theme"
+                :options="countries"
+                :filter-correction="filterCorrection"
+                error="Поле обязательно для заполнения"
+                prompt="Какая-то подсказка"
+                style="min-width: 300px"
+              />
+            </div>
+          </div>
+        </form>
+      `,
+    }}
+  </Story>
+</Preview>

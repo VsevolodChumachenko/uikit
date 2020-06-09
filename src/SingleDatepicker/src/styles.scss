@@ -1,0 +1,340 @@
+%default__label_active {
+  font-size: 12px;
+  line-height: 15px;
+  color: #767873;
+  top: 14px;
+
+  @include mobile {
+    top: 10px;
+  }
+}
+
+.single-datepicker {
+  $p: &;
+  position: relative;
+  border-radius: 6px;
+
+  @include mobile {
+    width: 100%;
+  }
+
+  .vdp-input-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      transition: 0.25s ease-in-out;
+      transform: scaleX(0);
+    }
+  }
+
+  .vdp-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+
+    svg {
+      fill: $grey6;
+    }
+  }
+
+  &__label {
+    font-size: 15px;
+    line-height: 19px;
+    white-space: nowrap;
+    color: #31322f;
+    padding-right: 25px;
+    position: absolute;
+    top: 24px;
+    left: 17px;
+    pointer-events: none;
+    transition: 0.15s ease-in-out;
+
+    @include mobile {
+      top: 20px;
+    }
+
+    &_active {
+      @extend %default__label_active;
+    }
+  }
+
+  input {
+    border: none;
+    height: 64px;
+    border-radius: 6px;
+    background: $white;
+    padding: 30px 17px 13px;
+    overflow: hidden;
+    position: relative;
+    font-weight: 600;
+    font-size: 17px;
+    width: 100%;
+
+    @include mobile {
+      height: 56px;
+      padding: 25px 17px 10px;
+    }
+
+    &:focus {
+      & + #{$p}__label {
+        @extend %default__label_active;
+      }
+    }
+  }
+
+  &__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: $white;
+    box-shadow: 0 0 12px 0 rgba($black, 0.15);
+    border-radius: 0 0 5px 5px;
+    width: 100%;
+    font-size: 14px;
+    text-align: left;
+    color: $base;
+
+    @include mobile {
+      top: calc(100% + 6px);
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    &:not(:empty) {
+      padding: 12px 16px;
+    }
+
+    &::after {
+      @include mobile {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border: solid transparent;
+        border-width: 0px 7px 6px;
+        border-bottom-color: $white;
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  &_active {
+    #{$p}__label {
+      @extend %default__label_active;
+    }
+  }
+
+  &_focused {
+    %focused__border-radius_0 {
+      border-bottom-left-radius: 0;
+
+      @include mobile {
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    .vdp-input-wrap {
+      @extend %focused__border-radius_0;
+
+      &::after {
+        background-color: $green;
+        transform: scale(1);
+      }
+    }
+
+    input {
+      @extend %focused__border-radius_0;
+    }
+  }
+
+  &_disabled {
+    .vdp-input-wrap {
+      pointer-events: none;
+      cursor: default;
+    }
+
+    input {
+      color: rgba($base, 0.4);
+    }
+
+    #{$p}__label {
+      opacity: 0.4;
+    }
+
+    .vdp-toggle {
+      cursor: default;
+      opacity: 0.4;
+    }
+  }
+
+  &_valid_false {
+    .vdp-input-wrap::after {
+      background-color: $red;
+      transform: scale(1);
+    }
+  }
+
+  &_valid_has-error {
+    .vdp-input-wrap {
+      z-index: 1;
+      border-bottom: {
+        left-radius: 0;
+        right-radius: 0;
+      }
+    }
+
+    input {
+      border-bottom: {
+        left-radius: 0;
+        right-radius: 0;
+      }
+    }
+  }
+
+  &_size_sm {
+    .vdp-datepicker__calendar {
+      right: 0;
+    }
+  }
+
+  &_theme_outlined {
+    input {
+      border: 1px solid #e5e7e8;
+    }
+
+    #{$p}__error {
+      border: 1px solid #e5e7e8;
+      border-top: 0;
+    }
+  }
+
+  &_theme_registration {
+    %registration__label_active {
+      font-size: 16px;
+      top: 0;
+      color: $labelColorActive;
+
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+
+    .vdp-input-wrap {
+      border-radius: 0;
+      height: 61px;
+
+      &::after {
+        transform: scaleX(1);
+        background-color: $borderGreen2;
+        border-radius: 0;
+      }
+
+      @include mobile {
+        height: 55px;
+      }
+    }
+
+    .vdp-toggle {
+      top: 27px;
+      right: 0;
+      transform: none;
+
+      svg {
+        fill: rgba($grey6, 0.5);
+      }
+
+      @include mobile {
+        top: 23px;
+      }
+    }
+
+    input {
+      box-sizing: content-box;
+      height: 18px;
+      padding: 27px 0 14px;
+      background: transparent;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 18px;
+
+      @include mobile {
+        font-size: 16px;
+        padding: 23px 0 12px;
+      }
+
+      &:focus {
+        & + #{$p}__label {
+          @extend %registration__label_active;
+        }
+      }
+
+      &:disabled {
+        opacity: 0.4;
+
+        & + #{$p}__label {
+          opacity: 0.4;
+        }
+      }
+    }
+
+    #{$p}__label {
+      left: 0;
+      top: 27px;
+      font-size: 20px;
+      line-height: 18px;
+      color: $base;
+
+      @include mobile {
+        font-size: 16px;
+        top: 23px;
+      }
+
+      &_active {
+        @extend %registration__label_active;
+      }
+    }
+
+    #{$p}__error {
+      background-color: transparent;
+      box-shadow: none;
+      font-size: 14px;
+      line-height: 17px;
+      margin: 7px 0 6px;
+      color: $base;
+      padding: 0;
+      position: static;
+    }
+
+    &#{$p}_focused {
+      .vdp-input-wrap:after {
+        background-color: $base;
+      }
+    }
+
+    &#{$p}_active {
+      #{$p}__label {
+        @extend %registration__label_active;
+      }
+    }
+
+    &#{$p}_valid_false {
+      .vdp-input-wrap:after {
+        background-color: $red;
+      }
+    }
+  }
+}

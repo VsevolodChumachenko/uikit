@@ -1,0 +1,177 @@
+.rtl {
+  direction: rtl;
+}
+
+.vdp-datepicker {
+  position: relative;
+  text-align: left;
+}
+
+.vdp-datepicker * {
+  box-sizing: border-box;
+}
+
+.vdp-datepicker__calendar {
+  position: absolute;
+  z-index: 100;
+  background: #fff;
+  width: 300px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 0 0 6px 6px;
+  padding: 20px;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.vdp-datepicker__calendar header {
+  display: flex;
+  align-items: center;
+}
+
+.vdp-datepicker__calendar .cell.day {
+  line-height: 35px;
+  height: 35px;
+}
+
+.vdp-datepicker__calendar header span {
+  display: inline-block;
+  text-align: center;
+  width: 71.42857142857143%;
+  float: left;
+}
+
+.vdp-datepicker__calendar header .prev,
+.vdp-datepicker__calendar header .next {
+  float: left;
+  text-indent: -10000px;
+  position: relative;
+  background-size: contain;
+  width: 19px;
+  height: 19px;
+  border: none;
+  background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTEgMTciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTkuMzggMTAuMDc2bC02Ljg5NSA2Ljg5NS0xLjU5LTEuNTkxIDYuODk0LTYuODk1TC44OTQgMS41OTEgMi40ODUgMGw4LjQ4NiA4LjQ4NS0xLjU5MSAxLjU5MXoiIGZpbGw9IiNEM0Q3Q0QiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPjwvc3ZnPg==)
+    right no-repeat !important;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.vdp-datepicker__calendar header .prev {
+  margin-right: auto;
+  margin-left: 10px;
+  background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTEgMTciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuNTkxIDEwLjA3Nmw2Ljg5NCA2Ljg5NSAxLjU5MS0xLjU5MS02Ljg5NC02Ljg5NSA2Ljg5NC02Ljg5NEw4LjQ4NiAwIDAgOC40ODVsMS41OTEgMS41OTF6IiBmaWxsPSIjRDNEN0NEIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD48L3N2Zz4=)
+    left no-repeat !important;
+}
+
+.vdp-datepicker__calendar header .prev:not(.disabled),
+.vdp-datepicker__calendar header .next:not(.disabled),
+.vdp-datepicker__calendar header .up:not(.disabled) {
+  cursor: pointer;
+}
+
+.vdp-datepicker__calendar header .prev:not(.disabled):hover,
+.vdp-datepicker__calendar header .next:not(.disabled):hover,
+.vdp-datepicker__calendar header .up:not(.disabled):hover {
+  background: #eee;
+}
+
+.vdp-datepicker__calendar .disabled {
+  color: #ddd;
+  cursor: default;
+}
+
+.vdp-datepicker__calendar .flex-rtl {
+  display: flex;
+  width: inherit;
+  flex-wrap: wrap;
+}
+
+.vdp-datepicker__calendar .cell {
+  display: inline-block;
+  padding: 0 5px;
+  width: 14.285714285714286%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  color: #565a5c;
+
+  &.disabled {
+    opacity: 0.5;
+  }
+}
+
+.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day,
+.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month,
+.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year {
+  cursor: pointer;
+}
+
+.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover,
+.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover,
+.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover {
+  background-color: rgba(#7ec728, 0.1);
+  border: none;
+}
+
+.vdp-datepicker__calendar .cell.selected {
+  background: $green;
+  color: $white;
+  border-radius: 2px;
+}
+
+.vdp-datepicker__calendar .cell.selected:hover {
+  background-color: $green;
+}
+
+.vdp-datepicker__calendar .cell.selected.highlighted {
+  background-color: $green;
+  color: $white;
+  font-weight: 600;
+}
+
+.vdp-datepicker__calendar .cell.highlighted {
+  color: $green;
+}
+
+.vdp-datepicker__calendar .cell.highlighted.disabled {
+  color: #a3a3a3;
+}
+
+.vdp-datepicker__calendar .cell.grey {
+  color: #888;
+}
+
+.vdp-datepicker__calendar .cell.grey:hover {
+  background: inherit;
+}
+
+.vdp-datepicker__calendar .cell.day-header {
+  font-size: 75%;
+  white-space: nowrap;
+  cursor: inherit;
+}
+
+.vdp-datepicker__calendar .cell.day-header:hover {
+  background: inherit;
+}
+
+.vdp-datepicker__calendar .month,
+.vdp-datepicker__calendar .year {
+  width: 33.333%;
+}
+
+.vdp-datepicker__clear-button,
+.vdp-datepicker__calendar-button {
+  cursor: pointer;
+  font-style: normal;
+}
+
+.vdp-datepicker__clear-button.disabled,
+.vdp-datepicker__calendar-button.disabled {
+  color: #999;
+  cursor: default;
+}

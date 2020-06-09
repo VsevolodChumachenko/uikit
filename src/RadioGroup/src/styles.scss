@@ -1,0 +1,84 @@
+.radio-group {
+  $p: &;
+  display: flex;
+  align-items: center;
+
+  .radio {
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    color: $base;
+    border-bottom: 1px dashed currentColor;
+
+    &:hover {
+      color: $green;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 30px;
+    }
+
+    input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &_active {
+      pointer-events: none;
+      color: $green2;
+      border-bottom-color: transparent;
+    }
+
+    &_valid_false {
+      border-color: $red;
+      color: $red;
+    }
+  }
+
+  &__label {
+    font-size: 13px;
+    color: $grey4;
+
+    &:empty {
+      display: none;
+    }
+
+    &_left {
+      margin-right: 9px;
+    }
+
+    &_right {
+      margin-left: 9px;
+    }
+  }
+
+  &_disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &_size_lg {
+    .radio {
+      font-size: 20px;
+
+      @include mobile {
+        font-size: 16px;
+      }
+    }
+
+    #{$p}__label {
+      font-size: 20px;
+      line-height: 18px;
+      color: $labelColorActive;
+      margin-bottom: 1px;
+
+      @include mobile {
+        font-size: 16px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

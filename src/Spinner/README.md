@@ -2,4 +2,4 @@
 
 ## Usage
 
-Import component with: `import Button from "@uikit/button"`;
+Import component with: `import Button from "@strahovkaru/button"`;

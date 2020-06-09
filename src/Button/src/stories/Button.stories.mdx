@@ -1,7 +1,7 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import { AllButtons, LoadingButtons, DisabledButtons } from './Button.story';
-import Button from '@uikit/button';
+import Button from '@strahovkaru/button';
 
 <Meta title="Button" component={Button} />
 
@@ -10,7 +10,7 @@ import Button from '@uikit/button';
 Button `Vue` component with 4 themes and 4 sizes
 
 <Preview>
-  <Story name="default" decorators={[withKnobs]} height="70px">
+  <Story name="interactive" decorators={[withKnobs]} height="70px">
     {{
       props: {
         size: {
@@ -58,18 +58,18 @@ Button `Vue` component with 4 themes and 4 sizes
 Install component
 
 ```
-npm i @uikit/button @uikit/spinner
+npm i @strahovkaru/button @strahovkaru/spinner
 
-yarn add @uikit/button @uikit/spinner
+yarn add @strahovkaru/button @strahovkaru/spinner
 ```
 
 > **NOTE**
 >
-> It works with only with global register `@uikit/spinner` component
+> It works with only with global register `@strahovkaru/spinner` component
 >
 > ```js
 > import Vue from 'vue';
-> import Spinner from '@uikit/spinner';
+> import Spinner from '@strahovkaru/spinner';
 >
 > Vue.component('spinner', Spinner);
 > ```
@@ -79,7 +79,7 @@ yarn add @uikit/button @uikit/spinner
 Import component into your parent component.
 
 ```js
-import Button from '@uikit/button';
+import Button from '@strahovkaru/button';
 export default {
   components: {
     Button,
@@ -89,12 +89,12 @@ export default {
 };
 ```
 
-or register it globally after `@uikit/spinner`
+or register it globally after `@strahovkaru/spinner`
 
 ```js
 import Vue from 'vue';
-import Spinner from '@uikit/spinner';
-import Button from '@uikit/button';
+import Spinner from '@strahovkaru/spinner';
+import Button from '@strahovkaru/button';
 
 Vue.component('spinner', Spinner);
 Vue.component('base-button', Button);

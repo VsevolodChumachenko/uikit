@@ -1,5 +1,5 @@
 {
-  "name": "@uikit/button",
+  "name": "@strahovkaru/button",
   "version": "1.0.10",
   "description": "",
   "main": "dist/index.common.js",
@@ -13,7 +13,7 @@
     "lerna": "^3.21.0"
   },
   "peerDependencies": {
-    "@uikit/spinner": "1.x"
+    "@strahovkaru/spinner": "1.x"
   },
   "gitHead": "a7364a0fadd04c0b5313841e7c70c0f56188288f",
   "sideEffects": false

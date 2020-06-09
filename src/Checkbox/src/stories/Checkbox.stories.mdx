@@ -1,0 +1,245 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
+import Checkbox from '@strahovkaru/checkbox';
+const themes = [
+  'white',
+  'secondary',
+  'third',
+  'fourth',
+  'registration',
+  'green',
+];
+
+<Meta
+  title="Checkbox"
+  component={Checkbox}
+  parameters={{
+    backgrounds: {
+      default: 'registration',
+      values: [
+        { name: 'dark', value: '#384e5c' },
+        { name: 'white', value: '#fff' },
+        { name: 'registration', value: '#f9f9f9' },
+      ],
+    },
+  }}
+/>
+
+# Checkbox
+
+`Vue` component `checkbox`
+
+<Preview>
+  <Story name="interactive" height="50px" decorators={[withKnobs]}>
+    {{
+      components: { Checkbox },
+      props: {
+        theme: {
+          default: select('Theme', themes, themes[1]),
+        },
+        text: {
+          default: text('Text', 'Согласие на обработку персональных данных'),
+        },
+        checked: {
+          default: boolean('Checked', false),
+        },
+        big: {
+          default: boolean('Big', false),
+        },
+      },
+      template: `
+        <div>
+          <h3
+            style="
+              margin-bottom: 5px;
+              font-weight:bold;
+              font-family: 'ALS Schlange', sans-serif;
+            "
+          >{{theme}}</h3>
+          <checkbox
+            :value="checked"
+            @input="$emit('input', '$event')"
+            :theme="theme"
+            :big="big"
+          >
+            {{text}}
+          </checkbox>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Usage
+
+Install component
+
+```
+npm i @strahovkaru/checkbox
+
+yarn add @strahovkaru/checkbox
+```
+
+> **NOTE**
+>
+> For validation you have to use `Vuelidate` https://vuelidate.js.org/
+
+---
+
+Import component into your parent component.
+
+```js
+import Checkbox from '@strahovkaru/checkbox';
+export default {
+  components: {
+    Checkbox,
+  },
+};
+```
+
+or register it globally
+
+```js
+import Vue from 'vue';
+import Checkbox from '@strahovkaru/checkbox';
+
+Vue.component('checkbox', Checkbox);
+```
+
+---
+
+Then use it in your `template`
+
+```html
+<checkbox v-model="$v.checked.$model" :meta="$v.checked" theme="registration">
+  {{text}}
+</checkbox>
+```
+
+## Props
+
+<Props of={Checkbox} />
+
+## Disabled
+
+Disabled state of `checkbox`
+
+<Preview>
+  <Story name="disabled">
+    {{
+      components: { Checkbox },
+      data() {
+        return {
+          checked: true,
+          themes,
+        };
+      },
+      template: `
+        <div>
+          <template v-for="theme of themes">
+            <h3
+              style="
+                margin-bottom: 5px;
+                font-weight:bold;
+                font-family: 'ALS Schlange', sans-serif;
+              "
+            >{{theme}}</h3>
+            <checkbox
+              :theme="theme"
+              style="margin-bottom: 10px;"
+              v-model="checked"
+              :disabled="true"
+            >
+              Согласие на обработку персональных данных
+            </checkbox>
+          </template>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 2 Sizes
+
+2 sizes of `checkbox`. Property `big`
+
+<Preview>
+  <Story name="2 sizes">
+    {{
+      components: { Checkbox },
+      data() {
+        return {
+          checked: false,
+          themes,
+        };
+      },
+      template: `
+        <div>
+          <template v-for="theme of themes">
+            <h3
+              style="
+                margin-bottom: 5px;
+                font-weight:bold;
+                font-family: 'ALS Schlange', sans-serif;
+              "
+            >{{theme}}</h3>
+            <checkbox
+              :theme="theme"
+              style="margin-bottom: 5px;"
+              v-model="checked"
+            >
+              Согласие на обработку персональных данных
+            </checkbox>
+            <checkbox
+              :theme="theme"
+              style="margin-bottom: 10px;"
+              v-model="checked"
+              :big="true"
+            >
+              Согласие на обработку персональных данных
+            </checkbox>
+          </template>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Invalid
+
+Invalid state of `checkbox`. Using `Vuelidate`.
+
+<Preview>
+  <Story name="invalid">
+    {{
+      components: { Checkbox },
+      data() {
+        return {
+          checked: false,
+          themes,
+        };
+      },
+      template: `
+        <div>
+          <template v-for="theme of themes">
+            <h3
+              style="
+                margin-bottom: 5px;
+                font-weight:bold;
+                font-family: 'ALS Schlange', sans-serif;
+              "
+            >{{theme}}</h3>
+            <checkbox
+              :theme="theme"
+              style="margin-bottom: 5px;"
+              v-model="checked"
+              :meta="{$error: true}"
+            >
+              Согласие на обработку персональных данных
+            </checkbox>
+          </template>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>

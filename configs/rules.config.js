@@ -4,10 +4,6 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = [
   {
-    test: /\.js$/,
-    exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file),
-  },
-  {
     test: /\.scss$/,
     use: [
       'vue-style-loader',

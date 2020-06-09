@@ -1,0 +1,252 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import {
+  withKnobs,
+  select,
+  text,
+  radios,
+  boolean,
+} from '@storybook/addon-knobs';
+import RadioGroup from '@strahovkaru/radio-group';
+const sizes = ['md', 'lg'];
+const options = [
+  { id: '0', label: 'Мужской' },
+  { id: '1', label: 'Женский' },
+  { id: '2', label: 'Не определился' },
+];
+
+<Meta
+  title="Radio Group"
+  component={RadioGroup}
+  parameters={{
+    backgrounds: {
+      default: 'registration',
+      values: [
+        { name: 'dark', value: '#384e5c' },
+        { name: 'white', value: '#fff' },
+        { name: 'registration', value: '#f9f9f9' },
+      ],
+    },
+  }}
+/>
+
+# Radio Group
+
+`Vue` component `radio-group`
+
+<Preview>
+  <Story name="interactive" height="50px" decorators={[withKnobs]}>
+    {{
+      components: { RadioGroup },
+      props: {
+        size: {
+          default: select('Theme', sizes, sizes[0]),
+        },
+        leftLabel: {
+          default: text('Left label', 'Заголовок слева'),
+        },
+        rightLabel: {
+          default: text('Right label', 'Заголовок справа'),
+        },
+        disabled: {
+          default: boolean('Disabled', false),
+        },
+      },
+      data() {
+        return {
+          options,
+          value: '0',
+        };
+      },
+      methods: {
+        action: action('input'),
+      },
+      template: `
+        <div>
+          <h3
+            style="
+              margin-bottom: 5px;
+              font-weight:bold;
+              font-family: 'ALS Schlange', sans-serif;
+            "
+          >{{size}}</h3>
+          <radio-group
+            v-model="value"
+            @input="action"
+            :size="size"
+            :disabled="disabled"
+            :options="options"
+          >
+            <template #left-label>{{leftLabel}}</template>
+            <template #right-label>{{rightLabel}}</template>
+          </radio-group>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Usage
+
+Install component
+
+```
+npm i @strahovkaru/radio-group
+
+yarn add @strahovkaru/radio-group
+```
+
+> **NOTE**
+>
+> For validation you have to use `Vuelidate` https://vuelidate.js.org/
+
+---
+
+Import component into your parent component.
+
+```js
+import Checkbox from '@strahovkaru/radio-group';
+export default {
+  components: {
+    RadioGroup,
+  },
+};
+```
+
+or register it globally
+
+```js
+import Vue from 'vue';
+import Checkbox from '@strahovkaru/radio-group';
+
+Vue.component('radio-group', RadioGroup);
+```
+
+---
+
+Then use it in your `template`
+
+```html
+<radio-group
+  v-model="$v.value.$model"
+  :meta="$v.value"
+  :options="options"
+  size="lg"
+>
+  <template #left-label>Заголовок слева</template>
+</radio-group>
+```
+
+## Props
+
+<Props of={RadioGroup} />
+
+## Disabled
+
+<Preview>
+  <Story name="disabled">
+    {{
+      components: { RadioGroup },
+      data() {
+        return {
+          options,
+          value: '0',
+        };
+      },
+      methods: {
+        action: action('input'),
+      },
+      template: `
+         <radio-group
+           v-model="value"
+           @input="action"
+           size="md"
+           :options="options"
+           :disabled="true"
+         >
+           <template #left-label>Заголовок слева</template>
+         </radio-group>`,
+    }}
+  </Story>
+</Preview>
+
+## Two Labels
+
+<Preview>
+  <Story name="two labels">
+    {{
+      components: { RadioGroup },
+      data() {
+        return {
+          options,
+          sizes,
+          value: '0',
+        };
+      },
+      methods: {
+        action: action('input'),
+      },
+      template: `
+           <div>
+             <template v-for="size of sizes">
+               <h3
+                 style="
+                   margin: 15px 0;
+                   font-weight:bold;
+                   font-family: 'ALS Schlange', sans-serif;
+                 "
+               >{{size}}</h3>
+               <radio-group
+                 v-model="value"
+                 @input="action"
+                 :size="size"
+                 :options="options"
+                 style="margin-bottom: 5px;"
+               >
+                 <template #left-label>Заголовок слева</template>
+               </radio-group>
+               <radio-group
+                 v-model="value"
+                 @input="action"
+                 :size="size"
+                 :options="options"
+               >
+                 <template #right-label>Заголовок справа</template>
+               </radio-group>
+             </template>
+           </div>
+           `,
+    }}
+  </Story>
+</Preview>
+
+## Invalid
+
+<Preview>
+  <Story name="invalid">
+    {{
+      components: { RadioGroup },
+      data() {
+        return {
+          options,
+          sizes,
+          value: '',
+        };
+      },
+      methods: {
+        action: action('input'),
+      },
+      template: `
+           <radio-group
+             v-model="value"
+             @input="action"
+             size="md"
+             :options="options"
+             :meta="{$error: true}"
+           >
+             <template #left-label>Заголовок слева</template>
+           </radio-group>
+           `,
+    }}
+  </Story>
+</Preview>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <symbol viewBox="0 0 19 19" id="calendar-icon">
+    <path
+      d="M15,2 L15,-4.4408921e-14 L14,-4.4408921e-14 L14,2 L4.984375,2 L4.984375,-4.4408921e-14 L4,-4.4408921e-14 L4,2 L0,2 L0,8.89112903 L0,19 L19,19 L19,8.96875 L19,2 L15,2 Z M1,3 L4.015625,3 L4.015625,4.96875 L5,4.96875 L5,3 L14,3 L14,4.96875 L15,4.96875 L15,3 L18.03125,3 L18.03125,8 L1,8 L1,3 Z M18.015625,18 L1,18 L1,9 L18.015625,9 L18.015625,18 Z"
+      id="Shape"></path>
+  </symbol>
+</svg>

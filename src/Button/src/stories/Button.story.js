@@ -1,4 +1,4 @@
-import Button from '@uikit/button';
+import Button from '@strahovkaru/button';
 import { action } from '@storybook/addon-actions';
 import './styles.story.scss';
 

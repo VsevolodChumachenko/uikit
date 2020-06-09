@@ -1,0 +1,12 @@
+{
+  "name": "@strahovkaru/steps",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.common.js",
+  "module": "src/index.vue",
+  "scripts": {
+    "build": "vue-cli-service build --mode production --name index --formats commonjs --target lib ./src/index.vue"
+  },
+  "author": "Vsevolod Chumachenko",
+  "license": "MIT"
+}

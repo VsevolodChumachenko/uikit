@@ -1,82 +1,164 @@
-import { requiredIf } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
 import { select, boolean, text } from '@storybook/addon-knobs';
-import Input from '@uikit/input';
+import Input from '@strahovkaru/input';
 
-export const InteractiveStory = () => ({
+const defaultData = {
   validations: {
     value: {
-      required: requiredIf(function () {
-        return this.isRequired;
-      }),
+      required,
     },
   },
   components: {
     'base-input': Input,
   },
-  props: {
-    label: {
-      default: text('Label', 'Город'),
-    },
-    isRequired: {
-      default: boolean('Required', true),
-    },
-    error: {
-      default: text('Error', 'Поле обязательно для заполнения'),
-    },
-    prompt: {
-      default: text('Prompt', 'Подсказываю тебе заполнить это поле'),
-    },
-    postfix: {
-      default: text('Postfix', 'м'),
-    },
-    mask: {
-      default: text('Mask', ''),
-    },
-    pattern: {
-      default: text('Pattern', ''),
-    },
-    disabled: {
-      default: boolean('Disabled', false),
-    },
-    format: {
-      default: select('Format', ['', 'locale'], 'locale'),
-    },
-    theme: {
-      default: select('Theme', ['primary', 'registration'], 'primary'),
-    },
-    lazy: {
-      default: boolean('Lazy', false),
-    },
-    transform: {
-      default: select('Transform', ['', 'uppercase', 'commaToDot'], ''),
-    },
-    small: {
-      default: boolean('Small', false),
-    },
-  },
   data() {
     return {
-      value: '',
+      value: '123',
+      themes: ['default', 'outlined', 'registration'],
     };
   },
+};
+
+export const DefaultStory = () => ({
+  extends: defaultData,
   template: `
-    <div class="container">
+    <div>
+      <h3 style="margin-bottom: 10px">Default</h3>
       <base-input
+        style="min-width: 200px"
         v-model="$v.value.$model"
         :meta="$v.value"
-        :label="label"
-        :error="error"
-        :prompt="prompt"
-        :postfix="postfix"
-        :mask="mask"
-        :pattern="pattern"
-        :disabled="disabled"
-        :format="format"
-        :theme="theme"
-        :lazy="lazy"
-        :transform="transform"
-        :small="small"
+        label="Заголовок"
+        error="Поле обязательно для заполнения"
+        prompt="Что-то введите"
       />
     </div>
+  `,
+});
+
+export const OutlinedStory = () => ({
+  extends: defaultData,
+  template: `
+    <div>
+      <h3 style="margin-bottom: 10px">Outlined</h3>
+      <base-input
+        style="min-width: 200px"
+        v-model="$v.value.$model"
+        :meta="$v.value"
+        label="Заголовок"
+        error="Поле обязательно для заполнения"
+        prompt="Что-то введите"
+        theme="outlined"
+      />
+    </div>
+  `,
+});
+
+export const RegistrationStory = () => ({
+  extends: defaultData,
+  template: `
+    <div>
+      <h3 style="margin-bottom: 10px">Registration</h3>
+      <base-input
+        style="min-width: 200px"
+        v-model="$v.value.$model"
+        :meta="$v.value"
+        label="Заголовок"
+        error="Поле обязательно для заполнения"
+        prompt="Что-то введите"
+        theme="registration"
+      />
+    </div>
+  `,
+});
+
+export const DisabledStory = () => ({
+  extends: defaultData,
+  template: `
+    <form class="form">
+      <div class="row">
+        <div class="col col-xl-4" v-for="theme of themes">
+          <h3 style="margin-bottom: 10px">{{theme}}</h3>
+          <base-input
+            style="min-width: 200px"
+            v-model="$v.value.$model"
+            :meta="$v.value"
+            :disabled="true"
+            :theme="theme"
+            label="Заголовок"
+            error="Поле обязательно для заполнения"
+            prompt="Что-то введите"
+          />
+        </div>
+      </div>
+    </form>
+  `,
+});
+
+export const PostfixStory = () => ({
+  extends: defaultData,
+  template: `
+    <form class="form">
+      <div class="row">
+        <div class="col col-xl-4" v-for="theme of themes">
+          <h3 style="margin-bottom: 10px">{{theme}}</h3>
+          <base-input
+            style="min-width: 200px"
+            v-model="$v.value.$model"
+            :meta="$v.value"
+            :theme="theme"
+            label="Заголовок"
+            error="Поле обязательно для заполнения"
+            prompt="Что-то введите"
+            postfix="м<sup>2</sup>"
+          />
+        </div>
+      </div>
+    </form>
+  `,
+});
+
+export const SmallStory = () => ({
+  extends: defaultData,
+  template: `
+    <form class="form">
+      <div class="row">
+        <div class="col col-xl-4" v-for="theme of themes">
+          <h3 style="margin-bottom: 10px">{{theme}}</h3>
+          <base-input
+            style="min-width: 200px"
+            v-model="$v.value.$model"
+            :meta="$v.value"
+            :theme="theme"
+            :small="true"
+            label="Заголовок"
+            error="Поле обязательно для заполнения"
+            prompt="Что-то введите"
+          />
+        </div>
+      </div>
+    </form>
+  `,
+});
+
+export const InvalidStory = () => ({
+  extends: defaultData,
+  template: `
+    <form class="form">
+      <div class="row">
+        <div class="col col-xl-4" v-for="theme of themes">
+          <h3 style="margin-bottom: 10px">{{theme}}</h3>
+          <base-input
+            style="min-width: 200px"
+            v-model="value"
+            :meta="{$error: true, $touch() {}}"
+            :theme="theme"
+            label="Заголовок"
+            error="Поле обязательно для заполнения"
+            prompt="Что-то введите"
+          />
+        </div>
+      </div>
+    </form>
   `,
 });

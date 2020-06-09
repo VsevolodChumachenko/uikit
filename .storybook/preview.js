@@ -1,8 +1,8 @@
 import '../assets/styles/main.scss';
 
 import Vue from 'vue';
-import Spinner from '@uikit/spinner';
-import Button from '@uikit/button';
+import Spinner from '@strahovkaru/spinner';
+import Button from '@strahovkaru/button';
 import VueInputAutowidth from 'vue-input-autowidth';
 import Vuelidate from 'vuelidate';
 import { IMaskComponent } from 'vue-imask';

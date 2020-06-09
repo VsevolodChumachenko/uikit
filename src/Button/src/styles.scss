@@ -8,29 +8,35 @@
   align-items: center;
   justify-content: center;
   position: relative;
+
   @include mobile {
     width: 100%;
   }
+
   &:disabled {
     opacity: 0.5;
     pointer-events: none;
   }
+
   $themes: (
     (primary, $btnPrimary, $white, $btnPrimaryHover, $btnPrimary),
     (secondary, $btnSecondary, $white, $btnSecondaryHover, $btnSecondary),
     (ghost, $bthGhost, $green, $btnGhostHover, #dde3d5)
   );
+
   @each $name, $bg, $color, $hover, $borderColor in $themes {
     &.#{$name} {
       background: $bg;
       color: $color;
       border-color: $borderColor;
+
       &:hover {
         background: $hover;
         border-color: $hover;
       }
     }
   }
+
   &.md {
     height: 64px;
     padding: 0 46px;
@@ -42,14 +48,17 @@
       height: 56px;
     }
   }
+
   &.sm {
     @extend .md;
     height: 56px;
   }
+
   &.xs {
     @extend .md;
     height: 48px;
   }
+
   &.xxs {
     @extend .md;
     height: 35px;
@@ -57,18 +66,22 @@
     border-radius: 4px;
     font-weight: 400;
   }
+
   span {
     white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
+
     &.loading {
       opacity: 0;
     }
+
     svg {
       margin-left: 15px;
     }
   }
+
   &.block {
     width: 100%;
     display: block;

@@ -1,0 +1,115 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, number } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import Steps from '@strahovkaru/steps';
+const steps = [
+  [
+    { idx: 1, title: 'Первый этап' },
+    { idx: 2, title: 'Второй этап' },
+    { idx: 3, title: 'Третий этап' },
+  ],
+  [
+    { idx: 1, title: 'Первый этап' },
+    { idx: 2, title: 'Второй этап' },
+    { idx: 3, title: 'Третий этап' },
+    { idx: 4, title: 'Четвёртый этап' },
+    { idx: 5, title: 'Пятый этап' },
+  ],
+];
+
+<Meta title="Steps" component={Steps} decorators={[withKnobs]} />
+
+# Steps
+
+`Vue` steps view component
+
+<Preview>
+  <Story name="interactive">
+    {{
+      components: { Steps },
+      props: {
+        steps: {
+          default: select('Steps', steps, steps[0]),
+        },
+        currentStep: {
+          default: number('Current step', 2),
+        },
+        align: {
+          default: select('Align', ['left', 'center', 'right'], 'left'),
+        },
+      },
+      methods: {
+        action: action('click on step'),
+      },
+      template:
+        '<steps :steps="steps" :current-step="currentStep" :align="align" @click="action" />',
+    }}
+  </Story>
+</Preview>
+
+## Usage
+
+Install component
+
+```
+npm i @strahovkaru/steps
+
+yarn add @strahovkaru/steps
+```
+
+---
+
+Import component into your parent component.
+
+```js
+import Steps from '@strahovkaru/steps';
+export default {
+  components: {
+    Steps,
+  },
+};
+```
+
+or register it globally
+
+```js
+import Vue from 'vue';
+import Spinner from '@strahovkaru/steps';
+
+Vue.component('steps', Steps);
+```
+
+---
+
+Then use it in your `template`
+
+```html
+<steps :steps="steps" :current-step="2" align="center" />
+```
+
+## Props
+
+<Props of={Steps}></Props>
+
+## Align
+
+Horizontal align is controlled by `align` property. Look at `Canvas` tab
+
+<Preview>
+  <Story name="aligns">
+    {{
+      components: { Steps },
+      props: {
+        steps: {
+          default: select('Steps', steps, steps[0]),
+        },
+      },
+      template: `
+      <div>
+        <steps :steps="steps" :current-step="1" align="left"/>
+        <steps :steps="steps" :current-step="2" align="center"/>
+        <steps :steps="steps" :current-step="3" align="right"/>
+      </div>`,
+    }}
+  </Story>
+</Preview>

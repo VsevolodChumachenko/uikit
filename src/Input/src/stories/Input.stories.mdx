@@ -1,16 +1,156 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import { withKnobs } from '@storybook/addon-knobs';
-import Input from '@uikit/input';
-import { InteractiveStory } from './Input.story';
+import Input from '@strahovkaru/input';
+import {
+  DefaultStory,
+  OutlinedStory,
+  RegistrationStory,
+  DisabledStory,
+  PostfixStory,
+  SmallStory,
+  InvalidStory,
+} from './Input.story';
 
-<Meta title="Input" component={Input} />
+<Meta
+  title="Input"
+  component={Input}
+  parameters={{
+    backgrounds: {
+      default: 'registration',
+      values: [
+        { name: 'dark', value: '#384e5c' },
+        { name: 'white', value: '#fff' },
+        { name: 'registration', value: '#f9f9f9' },
+      ],
+    },
+  }}
+/>
 
-#Input
+# Input
 
-`Vue` component input with `IMask`, `vuelidate`, transforms and other features
+`Vue` component `input` with `IMask`, `vuelidate`, transforms and other features
 
 <Preview>
-  <Story name="interactive" height="150px">
-    {InteractiveStory}
+  <Story
+    name="default"
+    height="90px"
+    style="display: block"
+    parameters={{
+      backgrounds: {
+        default: 'dark',
+      },
+    }}
+  >
+    {DefaultStory}
+  </Story>
+  <Story
+    name="outlined"
+    height="90px"
+    style="display: block"
+    parameters={{
+      backgrounds: {
+        default: 'white',
+      },
+    }}
+  >
+    {OutlinedStory}
+  </Story>
+  <Story name="registration" height="90px" style="display: block">
+    {RegistrationStory}
+  </Story>
+</Preview>
+
+## Usage
+
+Install component
+
+```
+npm i @strahovkaru/input
+
+yarn add @strahovkaru/input
+```
+
+> **NOTE**
+>
+> For validation you have to use `Vuelidate` https://vuelidate.js.org/
+
+---
+
+Import component into your parent component.
+
+```js
+import Input from '@strahovkaru/input';
+export default {
+  components: {
+    Button,
+    //or
+    'base-input': Input,
+  },
+};
+```
+
+or register it globally
+
+```js
+import Vue from 'vue';
+import Input from '@strahovkaru/input';
+
+Vue.component('base-input', Input);
+```
+
+---
+
+Then use it in your `template`
+
+```html
+<base-input
+  v-model="$v.value.$model"
+  :meta="$v.value"
+  label="Label"
+  error="Поле обязательно для заполнения"
+/>
+```
+
+## Props
+
+<Props of={Input} />
+
+## Disabled buttons
+
+When the `disabled` property is `true`
+
+<Preview>
+  <Story name="disabled" height="150px">
+    {DisabledStory}
+  </Story>
+</Preview>
+
+## Postfix
+
+When the `postfix` property is not `empty`
+
+<Preview>
+  <Story name="postfix" height="150px">
+    {PostfixStory}
+  </Story>
+</Preview>
+
+## Small
+
+When the `small` property is `true`
+
+<Preview>
+  <Story name="small" height="150px">
+    {SmallStory}
+  </Story>
+</Preview>
+
+## Invalid
+
+Invalid state of `input`. Using `Vuelidate`
+
+<Preview>
+  <Story name="invalid" height="150px">
+    {InvalidStory}
   </Story>
 </Preview>

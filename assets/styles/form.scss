@@ -26,3 +26,60 @@
     position: relative;
   }
 }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+
+  &.align-center {
+    align-items: center;
+  }
+
+  @include mobile {
+    margin: 0 -4px;
+  }
+}
+
+@mixin col($colWidth, $size) {
+  @if $size == xl {
+    .col-xl-#{$colWidth} {
+      max-width: 100% / 12 * $colWidth;
+      flex: 0 0 (100% / 12 * $colWidth);
+      padding: 0 8px;
+    }
+  }
+  @if $size == lg {
+    .col-lg-#{$colWidth} {
+      @include tablet {
+        max-width: 100% / 12 * $colWidth;
+        flex: 0 0 (100% / 12 * $colWidth);
+        padding: 0 8px;
+      }
+    }
+  }
+  @if $size == md {
+    .col-md-#{$colWidth} {
+      @include tablet-sm {
+        max-width: 100% / 12 * $colWidth;
+        flex: 0 0 (100% / 12 * $colWidth);
+        padding: 0 8px;
+      }
+    }
+  }
+  @if $size == sm {
+    .col-sm-#{$colWidth} {
+      @include mobile {
+        max-width: 100% / 12 * $colWidth;
+        flex: 0 0 (100% / 12 * $colWidth);
+        padding: 0 4px;
+      }
+    }
+  }
+}
+
+@each $size in xl, lg, md, sm {
+  @for $i from 1 through 12 {
+    @include col($i, $size);
+  }
+}

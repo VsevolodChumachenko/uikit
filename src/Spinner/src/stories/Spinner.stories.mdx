@@ -1,5 +1,5 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import Spinner from '@uikit/spinner';
+import Spinner from '@strahovkaru/spinner';
 import { withKnobs, select } from '@storybook/addon-knobs';
 
 <Meta title="Spinner" component={Spinner} />
@@ -9,7 +9,7 @@ import { withKnobs, select } from '@storybook/addon-knobs';
 Spinner `Vue` component with 2 sizes and inline position
 
 <Preview>
-  <Story name="default" decorators={[withKnobs]} height="100px">
+  <Story name="interactive" decorators={[withKnobs]} height="100px">
     {{
       props: {
         size: {
@@ -31,9 +31,9 @@ Spinner `Vue` component with 2 sizes and inline position
 Install component
 
 ```
-npm i @uikit/spinner
+npm i @strahovkaru/spinner
 
-yarn add @uikit/spinner
+yarn add @strahovkaru/spinner
 ```
 
 ---
@@ -41,7 +41,7 @@ yarn add @uikit/spinner
 Import component into your parent component.
 
 ```js
-import Spinner from '@uikit/button';
+import Spinner from '@strahovkaru/button';
 export default {
   components: {
     Spinner,
@@ -49,11 +49,11 @@ export default {
 };
 ```
 
-or register it globally after `@uikit/spinner`
+or register it globally after `@strahovkaru/spinner`
 
 ```js
 import Vue from 'vue';
-import Spinner from '@uikit/spinner';
+import Spinner from '@strahovkaru/spinner';
 
 Vue.component('spinner', Spinner);
 ```

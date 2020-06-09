@@ -1,6 +1,6 @@
 import { IMaskComponent } from 'vue-imask';
 import * as transform from './utils/transformInput';
-import insertIf from './utils/insertIf';
+import insertIf from '../../../utils/insertIf';
 
 export default {
   components: {
@@ -15,29 +15,76 @@ export default {
       type: String,
       default: '',
     },
-    pattern: String,
+    /**
+     * Set RegExp that describe what characters are able to be entered in input.
+     * For example: `\d` -- one numeric digit
+     */
+    pattern: {
+      type: String,
+    },
+    /**
+     * `HTML` string that will be added after inputted text after `blur`
+     * For example: `м<sup>2</sup>`
+     */
     postfix: String,
     disabled: {
       type: Boolean,
       default: false,
     },
-    format: String,
+    /**
+     * Format function than formats value after `input`.
+     * Available values: `locale`
+     */
+    format: {
+      type: String,
+      validator(val) {
+        return /(^locale$)/.test(val);
+      },
+    },
+    /**
+     * Available values: `'' | 'outlined' | 'registration'`
+     */
     theme: {
       type: String,
-      default: 'primary',
+      default: '',
     },
-    mask: [String, RegExp],
+    /**
+     * `Input imask` property see https://imask.js.org/
+     */
+    mask: [String, RegExp, Number, Function],
+    /**
+     * `Input imask` property that adds `_` digit at the empty mask position when `false`
+     */
     lazy: {
       type: Boolean,
       default: true,
     },
+    /**
+     * Transform function that transform value after `input` event.
+     * Available values: `'uppercase' | 'commaToDot'`
+     */
     transform: String,
-    small: Boolean,
+    /**
+     * Small size of input
+     */
+    small: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * `Vuelidate` meta object.
+     */
     meta: Object,
+    /**
+     * Error string. Used with `meta` property
+     */
     error: {
       type: String,
       default: '',
     },
+    /**
+     * Prompt string.
+     */
     prompt: {
       type: String,
       default: '',
@@ -59,14 +106,16 @@ export default {
     classes() {
       return [
         'input',
-        this.theme,
-        ...insertIf(this.small, 'small'),
-        ...insertIf(this.val, 'filled'),
-        ...insertIf(!this.isBlur, 'isFocus'),
-        ...insertIf(this.value, 'isActive'),
-        ...insertIf(this.isValid && this.isBlur, 'isValid'),
-        ...insertIf(this.isInvalid, 'isInvalid'),
-        ...insertIf(this.isInvalid && this.error.length !== 0, 'has-error'),
+        `input_theme_${this.theme}`,
+        ...insertIf(this.small, 'input_size_small'),
+        ...insertIf(this.val, 'input_state_active'),
+        ...insertIf(!this.isBlur, 'input_state_focused'),
+        ...insertIf(this.isValid && this.isBlur, 'input_valid_true'),
+        ...insertIf(this.isInvalid, 'input_valid_false'),
+        ...insertIf(
+          this.isInvalid && this.error.length !== 0,
+          'input_state_has-error'
+        ),
       ];
     },
     showPostfix() {
@@ -119,6 +168,9 @@ export default {
     blur(event) {
       this.isBlur = true;
       this.$emit('blur', event);
+    },
+    getTextWidth(val) {
+      input;
     },
   },
   watch: {
