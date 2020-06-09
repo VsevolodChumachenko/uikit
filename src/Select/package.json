@@ -1,5 +1,6 @@
 {
   "name": "@strahovkaru/select",
+  "version": "0.0.0",
   "description": "",
   "main": "dist/index.common.js",
   "module": "src/index.vue",
