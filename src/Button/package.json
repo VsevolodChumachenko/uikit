@@ -1,6 +1,6 @@
 {
   "name": "@strahovkaru/button",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "main": "dist/index.common.js",
   "module": "src/index.vue",
