@@ -1,6 +1,6 @@
 import { IMaskComponent } from 'vue-imask';
 import * as transform from './utils/transformInput';
-import insertIf from '../../../utils/insertIf';
+import insertIf from './utils/insertIf';
 
 export default {
   components: {

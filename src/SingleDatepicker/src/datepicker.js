@@ -1,5 +1,5 @@
 import Datepicker from './components/Datepicker';
-import insertIf from '../../../utils/insertIf';
+import insertIf from './utils/insertIf';
 
 export default {
   inheritAttrs: false,

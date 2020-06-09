@@ -1,6 +1,6 @@
 import Multiselect from './Multiselect';
-import insertIf from '../../../utils/insertIf';
-import plural from '../../../utils/plural';
+import insertIf from './utils/insertIf';
+import plural from './utils/plural';
 
 export default {
   inheritAttrs: false,
