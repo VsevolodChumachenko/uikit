@@ -532,7 +532,6 @@ fieldset[disabled] .multiselect {
   line-height: 20px;
   border: none;
   border-radius: 5px;
-  background: #fff;
   padding: 0 0 0 10px;
   width: calc(100%);
   transition: border 0.1s ease;
@@ -599,7 +598,6 @@ fieldset[disabled] .multiselect {
   line-height: 21px;
   border-radius: 5px;
   color: $base;
-  background: $white;
   white-space: nowrap;
   overflow: hidden;
   max-width: 100%;
