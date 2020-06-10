@@ -151,10 +151,7 @@ export default {
         ...insertIf(this.value, 'select_filled'),
         ...insertIf(this.disabled, 'select_disabled'),
         ...insertIf(!this.disabled && this.isInvalid, 'select_valid_false'),
-        ...insertIf(
-          this.isInvalid && this.error.length !== 0,
-          'select_has-error'
-        ),
+        ...insertIf(this.isInvalid && this.error, 'select_has-error'),
       ];
     },
     pluralPostfix() {
