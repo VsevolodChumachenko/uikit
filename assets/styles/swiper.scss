@@ -4,10 +4,10 @@
   @include mobile {
     display: block;
   }
-  ::v-deep .swiper-pagination-bullet {
+  /deep/ .swiper-pagination-bullet {
     margin: 0 4px;
   }
-  ::v-deep .swiper-pagination-bullet-active {
+  /deep/ .swiper-pagination-bullet-active {
     background: $green;
   }
 }

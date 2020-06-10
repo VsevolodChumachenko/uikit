@@ -3,7 +3,7 @@
   position: relative;
   width: 100%;
 
-  ::v-deep.multiselect {
+  /deep/.multiselect {
     &--active {
       & + #{$p}__label {
         font-size: 12px;
@@ -134,7 +134,7 @@
   }
 
   &_disabled {
-    ::v-deep.multiselect {
+    /deep/.multiselect {
       &__tags {
         .multiselect__input,
         .multiselect__single {
@@ -153,7 +153,7 @@
   }
 
   &_valid_false {
-    ::v-deep.multiselect__tags {
+    /deep/.multiselect__tags {
       &::after {
         background-color: $red;
         transform: scale(1);
@@ -162,7 +162,7 @@
   }
 
   &_has-error {
-    ::v-deep.multiselect__tags {
+    /deep/.multiselect__tags {
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
 
@@ -172,7 +172,7 @@
       }
     }
 
-    ::v-deep.multiselect--active .multiselect__tags {
+    /deep/.multiselect--active .multiselect__tags {
       @include mobile {
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
@@ -198,7 +198,7 @@
   }
 
   &_theme_outlined {
-    ::v-deep.multiselect {
+    /deep/.multiselect {
       &__tags {
         padding-top: 29px;
         padding-left: 7px;
@@ -223,7 +223,7 @@
     }
 
     &#{$p}_valid_false {
-      ::v-deep.multiselect__tags {
+      /deep/.multiselect__tags {
         border-bottom: 0;
       }
     }
@@ -231,7 +231,7 @@
     &#{$p}_size_small {
       @extend %default_size_small;
 
-      ::v-deep.multiselect__tags {
+      /deep/.multiselect__tags {
         padding-top: 25px;
       }
     }
@@ -249,7 +249,7 @@
       }
     }
 
-    ::v-deep.multiselect {
+    /deep/.multiselect {
       min-height: 61px;
 
       @include mobile {
@@ -403,11 +403,11 @@
     }
 
     &#{$p}_valid_false {
-      ::v-deep.multiselect__tags::after {
+      /deep/.multiselect__tags::after {
         background-color: $red;
       }
 
-      ::v-deep.multiselect--active .multiselect__tags::after {
+      /deep/.multiselect--active .multiselect__tags::after {
         background-color: $base;
       }
     }
