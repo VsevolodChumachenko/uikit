@@ -1,6 +1,6 @@
 {
   "name": "@strahovkaru/radio-group",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/index.umd.min.js",
   "module": "src/index.vue",

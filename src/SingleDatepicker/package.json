@@ -1,6 +1,6 @@
 {
   "name": "@strahovkaru/single-datepicker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/index.umd.min.js",
   "module": "src/index.vue",

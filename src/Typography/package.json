@@ -1,6 +1,6 @@
 {
   "name": "@strahovkaru/typography",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/index.umd.min.js",
   "module": "src/index.vue",
