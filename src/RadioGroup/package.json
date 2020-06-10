@@ -12,5 +12,4 @@
   "peerDependencies": {
     "vuelidate": "^0.7.4"
   },
-  "gitHead": "2ae64a393e10cfddbb75ce5f3a50ee054dc25082"
 }
