@@ -1,6 +1,6 @@
 {
   "name": "@strahovkaru/select",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "dist/index.umd.min.js",
   "module": "src/index.vue",
