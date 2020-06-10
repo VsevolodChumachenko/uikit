@@ -9,6 +9,9 @@
   },
   "author": "Vsevolod Chumachenko",
   "license": "MIT",
+  "dependencies": {
+    "@strahovkaru/vue-multiselect": "^2.1.6"
+  },
   "peerDependencies": {
     "vuelidate": "^0.7.4"
   }

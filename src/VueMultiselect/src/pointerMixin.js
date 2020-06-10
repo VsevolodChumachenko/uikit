@@ -93,8 +93,9 @@ export default {
           this.filteredOptions[this.pointer] &&
           this.filteredOptions[this.pointer].$isLabel &&
           !this.groupSelect
-        )
+        ) {
           this.pointerForward();
+        }
       }
       this.pointerDirty = true;
     },
@@ -110,16 +111,18 @@ export default {
           this.filteredOptions[this.pointer] &&
           this.filteredOptions[this.pointer].$isLabel &&
           !this.groupSelect
-        )
+        ) {
           this.pointerBackward();
+        }
       } else {
         /* istanbul ignore else */
         if (
           this.filteredOptions[this.pointer] &&
           this.filteredOptions[0].$isLabel &&
           !this.groupSelect
-        )
+        ) {
           this.pointerForward();
+        }
       }
       this.pointerDirty = true;
     },

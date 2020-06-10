@@ -40,4 +40,5 @@
 </template>
 
 <script src="./select.js"></script>
+<style src="./Multiselect/styles.scss" lang="scss"></style>
 <style src="./styles.scss" scoped lang="scss"></style>

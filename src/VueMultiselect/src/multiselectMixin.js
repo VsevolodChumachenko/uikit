@@ -627,11 +627,13 @@ export default {
         this.disabled ||
         option.$isDisabled ||
         option.$isLabel
-      )
+      ) {
         return;
+      }
       /* istanbul ignore else */
-      if (this.max && this.multiple && this.internalValue.length === this.max)
+      if (this.max && this.multiple && this.internalValue.length === this.max) {
         return;
+      }
       /* istanbul ignore else */
       if (key === 'Tab' && !this.pointerDirty) return;
       if (option.isTag) {

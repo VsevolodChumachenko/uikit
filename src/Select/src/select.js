@@ -1,4 +1,4 @@
-import Multiselect from './Multiselect';
+import Multiselect from '@strahovkaru/vue-multiselect';
 import insertIf from './utils/insertIf';
 import plural from './utils/plural';
 

@@ -376,6 +376,7 @@ export default {
           ? { width: '100%' }
           : { width: '0', position: 'absolute', padding: '0' };
       }
+      return null;
     },
     contentStyle() {
       return this.options.length
@@ -407,7 +408,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 fieldset[disabled] .multiselect {
   pointer-events: none;
 }
@@ -597,7 +598,7 @@ fieldset[disabled] .multiselect {
   padding: 0 16px 0 10px;
   line-height: 21px;
   border-radius: 5px;
-  color: $base;
+  color: #31322f;
   white-space: nowrap;
   overflow: hidden;
   max-width: 100%;
@@ -625,7 +626,7 @@ fieldset[disabled] .multiselect {
   display: block;
   width: 11px;
   height: 1px;
-  background-color: $base;
+  background-color: #31322f;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -662,7 +663,6 @@ fieldset[disabled] .multiselect {
 
 .multiselect__select {
   line-height: 16px;
-  display: block;
   position: absolute;
   box-sizing: border-box;
   width: 40px;
