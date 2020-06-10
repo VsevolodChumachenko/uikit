@@ -33,7 +33,7 @@
     .select__label {{ inputLabel }}
     .select__postfix(v-if='postfix', :style='{left: postfixOffset}')
       | {{ pluralPostfix }}
-    p.select__error(v-if="isInvalid && error.length !== 0")
+    p.select__error(v-if="isInvalid && error")
       | {{error}}
     p.select__prompt(v-if="prompt && !isInvalid")
       | {{prompt}}
