@@ -16,6 +16,5 @@
     "vue-input-autowidth": "^1.0.5",
     "vuelidate": "^0.7.4"
   },
-  "sideEffects": false,
   "gitHead": "2ae64a393e10cfddbb75ce5f3a50ee054dc25082"
 }
