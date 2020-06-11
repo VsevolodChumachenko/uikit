@@ -2,10 +2,10 @@
   "name": "@strahovkaru/input",
   "version": "1.0.7",
   "description": "",
-  "main": "dist/main.min.js",
+  "main": "dist/index.common.js",
   "module": "src/index.vue",
   "scripts": {
-    "build": "node build.js"
+    "build": "vue-cli-service build --name index --formats commonjs --target lib ./src/main.js"
   },
   "author": "Vsevolod Chumachenko",
   "license": "MIT",
@@ -16,5 +16,6 @@
     "vue-input-autowidth": "^1.0.5",
     "vuelidate": "^0.7.4"
   },
+  "sideEffects": false,
   "gitHead": "2ae64a393e10cfddbb75ce5f3a50ee054dc25082"
 }
