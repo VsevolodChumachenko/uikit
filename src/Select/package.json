@@ -2,10 +2,10 @@
   "name": "@strahovkaru/select",
   "version": "1.0.12",
   "description": "",
-  "main": "dist/index.commmon.js",
-  "module": "src/index.vue",
+  "main": "dist/index.umd.min.js",
+  "module": "src/main.js",
   "scripts": {
-    "build": "vue-cli-service build --mode production --name index --formats commonjs --target lib ./src/index.vue"
+    "build": "vue-cli-service build --inline-vue --mode production --name index --target lib ./src/index.vue"
   },
   "author": "Vsevolod Chumachenko",
   "license": "MIT",

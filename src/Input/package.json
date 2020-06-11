@@ -2,10 +2,10 @@
   "name": "@strahovkaru/input",
   "version": "1.0.8",
   "description": "",
-  "main": "dist/index.common.js",
-  "module": "src/index.vue",
+  "main": "dist/index.umd.min.js",
+  "module": "src/main.js",
   "scripts": {
-    "build": "vue-cli-service build --name index --formats commonjs --target lib ./src/main.js"
+    "build": "vue-cli-service build --inline-vue --mode production --name index --target lib ./src/main.js"
   },
   "author": "Vsevolod Chumachenko",
   "license": "MIT",
