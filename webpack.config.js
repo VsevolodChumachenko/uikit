@@ -4,6 +4,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 
 module.exports = {
   entry: './src/index.vue',
@@ -21,16 +22,13 @@ module.exports = {
     extensions: ['.vue', '.js', '.json'],
     modules: ['node_modules', 'src'],
   },
+  mode: "production",
   module: {
     rules,
   },
   plugins: [
     new VueLoaderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      },
-    }),
+    new VueSSRServerPlugin(),
     new ExtractTextPlugin({
       filename: 'styles.min.css',
     }),
