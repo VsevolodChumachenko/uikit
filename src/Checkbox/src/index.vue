@@ -8,7 +8,7 @@
         type='checkbox'
         v-bind="$attrs"
       )
-      .checkbox__check
+      span.checkbox__check
       slot
 </template>
 

@@ -1,16 +1,16 @@
 {
   "name": "@strahovkaru/select",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "",
   "main": "dist/index.umd.min.js",
   "module": "src/main.js",
   "scripts": {
-    "build": "vue-cli-service build --inline-vue --mode production --name index --target lib ./src/index.vue"
+    "build": "vue-cli-service build --inline-vue --mode production --name index --target lib ./src/main.js"
   },
   "author": "Vsevolod Chumachenko",
   "license": "MIT",
   "dependencies": {
-    "@strahovkaru/vue-multiselect": "^2.1.7"
+    "@strahovkaru/vue-multiselect": "^2.1.6"
   },
   "peerDependencies": {
     "vuelidate": "^0.7.4"
