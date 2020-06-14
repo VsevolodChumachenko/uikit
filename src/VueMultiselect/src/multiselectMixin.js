@@ -416,7 +416,7 @@ export default {
     },
     filteredOptions() {
       const search = this.search || '';
-      const normalizedSearch = search.toLowerCase().trim();
+      const normalizedSearch = search.toString().toLowerCase().trim();
 
       let options = this.options.concat();
 
